@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Mini Game Question</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div class="main">
+            <div class="monitor_1">
+                <div class="title">
+                    <p class="p-title">Welcome to Mini Game Question</p>
+                    <button id="js-btn-next" class="btn-start"><span>START</span></button>
+                </div>
+            </div>
+            <div class="monitor_2">
+                <div class="heading">
+                    <div class="icon">
+                        <i class='bx bx-list-check'></i>
+                    </div>
+                    <div class="question">
+                        <p>Question: <span>number of question</span></p>
+                        <h2 id="question">Put question in here</h2>   
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="content">
+                        <div class="answer" id="answer">
+                            <button>Answer is...</button>
+                            <button>Answer is...</button>
+                            <button>Answer is...</button>
+                            <button>Answer is...</button>
+                        </div>
+                    </div>
+                    <div class="sidebar-under">
+                        <button class="btn-funct" id="btn-submit"><span>Submit</span></button>
+                        <div id="score"><span>Number of score</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="monitor_3"></div>
+        </div>
+        
+        <script src="./main.js"></script>
+    </body>
+</html>
