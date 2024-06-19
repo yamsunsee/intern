@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ai là triệu phú?</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body onload="OnStart()">
+    <div class="container">
+        <div class="screen" id="startscreen">
+            <div class="bgr_img" id="start_img"></div>
+            <div class="input-container">
+                <input type="text" id="username" placeholder="Nhập tên">
+                <button onclick="StartGame()">Bắt đầu</button>
+            </div>
+        </div>
+        <div class="screen" id="levelscreen">
+            <div class="bgr_img" id="level_img"></div>
+            <div class="content-wrapper">
+                <div class="left-pane"></div>
+                <div class="right-pane">
+                    <div class="level-options">
+                        <h1>Hãy chọn mức độ của game:</h1>
+                        <button id="easy" onclick="chooseLevel('easy')">Dễ</button>
+                        <button id="medium" onclick="chooseLevel('medium')">Vừa</button>
+                        <button id="hard" onclick="chooseLevel('hard')">Khó</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="screen" id="gamescreen">
+            <div class="bgr_img" id="game_img"></div>
+            <div id="game">
+                <div id="question-container">
+                    <p id="question"></p>
+                    <div id="answers" class="grid-container">
+                    </div>
+                    <div class="button-container">
+                        <button id="stop-btn" onclick="stopGame()">Dừng cuộc chơi</button>
+                        <button id="next-btn" onclick="loadNextQuestion()">Câu tiếp theo</button>
+                    </div>
+                </div>
+                <div id="timer">Thời gian còn lại: 30 giây</div>
+            </div>
+        </div>
+        <div id="resultScreen" class="screen">
+            <h1>Kết quả của bạn</h1>
+            <div id="resultSummary">
+                <p id="correctCount">Số câu đúng: </p>
+                <p id="incorrectCount">Số câu sai: </p>
+            </div>
+            <div class="chart-container">
+                <canvas id="resultChart"></canvas> <!-- Thêm canvas để vẽ biểu đồ tròn -->
+            </div>
+            <button id="restartBtn" onclick="restartGame()">Chơi lại</button>
+        </div>
+    </div>
+
+    <!-- Hộp thoại thông báo -->
+    <div id="notification" class="notification hidden">
+        <p id="notification-message"></p>
+        <button onclick="closeNotification()">OK</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+</html>

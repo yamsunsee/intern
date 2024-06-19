@@ -1,0 +1,281 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Đảm bảo container lấp đầy toàn bộ chiều cao của viewport */
+}
+
+.screen {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Đẩy nội dung lên dưới cùng của màn hình */
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    z-index: 1; /* Đặt z-index cao hơn */
+}
+
+
+.bgr_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Đảm bảo hình nền lấp đầy màn hình */
+    height: 100%; /* Đảm bảo hình nền lấp đầy màn hình */
+    z-index: -1; /* Đặt z-index nhỏ hơn để đẩy nó xuống dưới các phần tử khác */
+    background-size: cover;
+    background-position: center;
+}
+.input-container {
+    margin-top: 80vh; /* Khoảng cách giữa ô nhập tên và nút Start */
+    text-align: center;
+}
+#start_img {
+    background-image: url('img/background_start.jpg');
+}
+
+#level_img {
+    background-image: url('img/background_level.jpg');
+}
+
+#game_img {
+    background-image: url('img/background_game.jpg');
+}
+
+#username {
+    padding: 15px; /* Tăng độ rộng và chiều cao của ô nhập */
+    font-size: 20px; /* Kích thước chữ cho ô nhập */
+    border: 2px solid #ccc; /* Viền của ô nhập */
+    border-radius: 8px; /* Bo tròn góc của ô nhập */
+    margin-right: 10px; /* Khoảng cách với nút Start */
+    width: 200px; /* Độ rộng cố định cho ô nhập */
+}
+
+#username:focus {
+    outline: none; /* Xóa đường viền khi ô nhập được focus */
+    border-color: #007bff; /* Thay đổi màu viền khi ô nhập được focus */
+}
+
+button {
+    padding: 15px 30px; /* Tăng độ rộng và chiều cao của nút */
+    font-size: 16px; /* Kích thước chữ cho nút */
+    background-color: #0daded; /* Màu nền của nút */
+    color: rgb(0, 0, 0); /* Màu chữ của nút */
+    border: none; /* Xóa viền của nút */
+    cursor: pointer; /* Biểu tượng chuột khi di chuột vào nút */
+    border-radius: 8px; /* Bo tròn góc của nút */
+    transition: background-color 0.3s;
+    font-size: 20px; /* Hiệu ứng chuyển đổi màu nền */
+}
+
+button:hover {
+    background-color: #0e033b; /* Màu nền khi di chuột vào nút */
+}
+.content-wrapper {
+    display: flex;
+    width: 100%; /* Độ rộng của nội dung bên trong màn hình */
+    height: 100%; /* Chiều cao của nội dung bên trong màn hình */
+    z-index: 1; /* Đảm bảo nội dung hiển thị trên nền */
+    border-radius: 10px; /* Bo tròn các góc của nội dung */
+}
+
+.left-pane, .right-pane {
+    flex: 1; /* Chiếm 50% chiều rộng */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.level-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.level-options button {
+    padding: 10px 20px; /* Để tăng độ rộng và chiều cao của nút */
+    font-size: 40px; /* Kích thước chữ cho nút */
+    background-color: #0daded; /* Màu nền của nút */
+    color: rgb(43, 42, 42); /* Màu chữ của nút */
+    border: none; /* Xóa viền của nút */
+    cursor: pointer; /* Biểu tượng chuột khi di chuột vào nút */
+    border-radius: 4px; /* Bo tròn góc của nút */
+    margin: 20px 0; /* Khoảng cách giữa các nút */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+}
+
+
+.level-options button:hover {
+    background-color: #0e033b; /* Màu nền khi di chuột vào nút */
+}
+
+.level-options h1 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #17b9fa;
+    border-radius: 8px;
+}
+
+.notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex; /* Sử dụng flexbox để căn giữa */
+    flex-direction: column; /* Đặt nội dung theo chiều dọc */
+    align-items: center; /* Căn giữa nội dung theo chiều ngang */
+}
+
+.notification.hidden {
+    display: none;
+}
+
+.notification button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #000000;
+    color: rgb(254, 254, 254);
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+
+}
+.notification button:hover {
+    background-color: #0e033b;
+}
+/* Styles for game screen */
+
+#game {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(220, 7, 7, 0.1);
+    width: 60%;
+    max-width: 100%; /* Giới hạn chiều rộng của game */
+    margin-bottom: 20px; /* Khoảng cách với phần khác */
+    color: rgb(255, 255, 255); /* Màu chữ của game */
+    position: absolute; /* Định vị tuyệt đối */
+    bottom: 0; /* Giữ nó ở dưới cùng */
+    left: 50%; /* Đưa nó về giữa */
+    transform: translateX(-50%); /* Dịch chuyển về trái 50% chiều rộng */
+}
+
+#resultScreen h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+#question {
+    font-size: 35px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 3px solid rgb(213, 214, 215);
+    background-color: #1f1e1e;
+    border-radius: 10px;
+}
+
+#answers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#answers button {
+    padding: 10px 20px;
+    font-size: 23px;
+    background-color: #f5f9fb;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+#answers button:hover {
+    background-color: #bbafc0;
+}
+/* Căn chỉnh nút trong gamescreen */
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+#next-btn, #stop-btn {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #161616;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+#next-btn:hover, #stop-btn:hover {
+    background-color: #605e5e;
+    color: rgb(19, 19, 19);
+}
+#answers button.selected {
+    animation: blink 1s steps(5, start) infinite;
+}
+
+#timer {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+@keyframes blink {
+    0%, 50%, 100% {
+        visibility: visible;
+    }
+    25%, 75% {
+        visibility: hidden;
+    }
+}
+
+#answers button.selected {
+    animation: blink 0.4s steps(1, start) 5; /* Tốc độ nhấp nháy nhanh hơn và nhấp nháy trong 3s */
+}
+
+#answers button.correct {
+    background-color: rgb(103, 244, 56);
+    color: black;
+    animation: none;
+}
+
+#answers button.incorrect {
+    background-color: red;
+    color: white;
+    animation: none;
+}
+.chart-container {
+    width: 70%; /* Điều chỉnh chiều rộng của container biểu đồ */
+    max-width: 400px; /* Giới hạn chiều rộng tối đa */
+    margin: 15px auto; /* Căn giữa và tạo khoảng cách với các phần tử khác */
+}
+
+#resultChart {
+    width: 100%;
+    height: auto; /* Đảm bảo tỷ lệ khung hình của biểu đồ phù hợp */
+}
+
