@@ -5,6 +5,7 @@
     height: 100vh; /* Đảm bảo container lấp đầy toàn bộ chiều cao của viewport */
 }
 
+
 .screen {
     position: relative;
     display: flex;
@@ -163,7 +164,7 @@ button:hover {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(220, 7, 7, 0.1);
-    width: 60%;
+    width: 100%;
     max-width: 100%; /* Giới hạn chiều rộng của game */
     margin-bottom: 20px; /* Khoảng cách với phần khác */
     color: rgb(255, 255, 255); /* Màu chữ của game */
@@ -171,6 +172,9 @@ button:hover {
     bottom: 0; /* Giữ nó ở dưới cùng */
     left: 50%; /* Đưa nó về giữa */
     transform: translateX(-50%); /* Dịch chuyển về trái 50% chiều rộng */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #resultScreen h1 {
@@ -190,6 +194,96 @@ button:hover {
     border: 3px solid rgb(213, 214, 215);
     background-color: #1f1e1e;
     border-radius: 10px;
+}
+
+.content-wrapper-game {
+    display: flex;
+    height: 100%;
+}
+#info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto; 
+    margin-bottom: 0px;
+    margin-left: 40px;
+    margin-right: 40px;
+    background-color: #001038;
+    border: 3px solid white;
+}
+
+  #info-table th, #info-table td {
+    padding: 4px;
+    text-align: center;
+} 
+
+#info-table th {
+    background-color: #4266ae;
+}
+
+.left-pane-game {
+    width: 25%;
+    padding: 20px; /* Thiết lập padding hoặc nội dung bên trái tùy ý */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Canh giữa theo chiều dọc */
+    align-items: center; /* Căn giữa nội dung bên trong theo chiều ngang */
+}
+
+
+.right-pane-game {
+    width: 70%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.left-pane-result {
+    width: 60%;
+    padding: 20px; /* Thiết lập padding hoặc nội dung bên trái tùy ý */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Canh giữa theo chiều dọc */
+    align-items: center; /* Căn giữa nội dung bên trong theo chiều ngang */
+}
+.right-pane-result {
+    width: 40%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-pane-result .account-info,
+.right-pane-result .bank-selection {
+    margin-top: 20px;
+}
+
+.right-pane-result label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.right-pane-result input[type="text"],
+.right-pane-result select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+
+#question-container {
+    width: 100%; /* Điều chỉnh giá trị này theo nhu cầu của bạn */
+    max-width: 100%; /* Giới hạn độ rộng tối đa */
+    margin: 0 auto;
+    text-align: center;
 }
 
 #answers {
@@ -240,9 +334,22 @@ button:hover {
 }
 
 #timer {
-    font-size: 18px;
+    font-size: 40px;
     margin-top: 20px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 3px solid white;
+    text-align: center; /* Căn giữa nội dung của timer */
+    margin-bottom: 50px; /* Khoảng cách dưới của timer */
 }
+
 
 @keyframes blink {
     0%, 50%, 100% {
@@ -279,3 +386,8 @@ button:hover {
     height: auto; /* Đảm bảo tỷ lệ khung hình của biểu đồ phù hợp */
 }
 
+.moneycurrent {
+    background-color: white;
+    color: black;
+    font-weight: bold; /* Ví dụ: làm đậm chữ khi được chọn */
+}

@@ -17,45 +17,77 @@
                 <button onclick="StartGame()">Bắt đầu</button>
             </div>
         </div>
-        <div class="screen" id="levelscreen">
-            <div class="bgr_img" id="level_img"></div>
-            <div class="content-wrapper">
-                <div class="left-pane"></div>
-                <div class="right-pane">
-                    <div class="level-options">
-                        <h1>Hãy chọn mức độ của game:</h1>
-                        <button id="easy" onclick="chooseLevel('easy')">Dễ</button>
-                        <button id="medium" onclick="chooseLevel('medium')">Vừa</button>
-                        <button id="hard" onclick="chooseLevel('hard')">Khó</button>
+            <div class="screen" id="levelscreen">
+                <div class="bgr_img" id="level_img"></div>
+                <div class="content-wrapper">
+                    <div class="left-pane"></div>
+                    <div class="right-pane">
+                        <div class="level-options">
+                            <h1>Hãy chọn mức độ của game:</h1>
+                            <button id="easy" onclick="chooseLevel('easy')">Dễ</button>
+                            <button id="medium" onclick="chooseLevel('medium')">Vừa</button>
+                            <button id="hard" onclick="chooseLevel('hard')">Khó</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="screen" id="gamescreen">
-            <div class="bgr_img" id="game_img"></div>
-            <div id="game">
-                <div id="question-container">
-                    <p id="question"></p>
-                    <div id="answers" class="grid-container">
-                    </div>
-                    <div class="button-container">
-                        <button id="stop-btn" onclick="stopGame()">Dừng cuộc chơi</button>
-                        <button id="next-btn" onclick="loadNextQuestion()">Câu tiếp theo</button>
+            <div class="screen" id="gamescreen">
+                <div class="bgr_img" id="game_img"></div>
+                <div id="game">
+                    <div id="content-wrapper-game" class="content-wrapper">
+                        <div class="left-pane">
+                            <table id="info-table">
+                            
+                            </table>
+                        </div>
+                        <div class="right-pane-game">
+                            <div id="timer"></div>
+                            <div id="question-container">
+                                <p id="question"></p>
+                                <div id="answers" class="grid-container"></div>
+                                <div class="button-container">
+                                    <button id="stop-btn" onclick="stopGame()">Dừng cuộc chơi</button>
+                                    <button id="next-btn" onclick="loadNextQuestion()">Câu tiếp theo</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div id="timer">Thời gian còn lại: 30 giây</div>
             </div>
-        </div>
+            
+        
         <div id="resultScreen" class="screen">
-            <h1>Kết quả của bạn</h1>
-            <div id="resultSummary">
-                <p id="correctCount">Số câu đúng: </p>
-                <p id="incorrectCount">Số câu sai: </p>
-            </div>
-            <div class="chart-container">
-                <canvas id="resultChart"></canvas> <!-- Thêm canvas để vẽ biểu đồ tròn -->
-            </div>
-            <button id="restartBtn" onclick="restartGame()">Chơi lại</button>
+            <div class="content-wrapper">
+                <div class="left-pane-result">
+                    <h1>Kết quả của bạn</h1>
+                    <div id="resultSummary">
+                        <p id="correctCount">Số câu đúng: </p>
+                        <p id="incorrectCount">Số câu sai: </p>
+                        <p id="notanswerCount">Số câu chưa làm: </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="resultChart"></canvas> 
+                    </div>
+                    <button id="restartBtn" onclick="restartGame()">Chơi lại</button>
+                </div>
+                <div class="right-pane-result">
+                    <h2 id="tienthuongnhanduoc">Số tiền bạn nhận được:</h2>
+                    <div class="account-info">
+                        <label for="accountNumber">Số tài khoản:</label>
+                        <input type="text" id="accountNumber" name="accountNumber" placeholder="Nhập số tài khoản">
+                    </div>
+                    <div class="bank-selection">
+                        <label for="bank">Chọn ngân hàng:</label>
+                        <select id="bank" name="bank">
+                            <option value="vietcombank">Vietcombank</option>
+                            <option value="techcombank">Techcombank</option>
+                            <option value="acb">ACB</option>
+                            <option value="vietinbank">Vietinbank</option>
+                            <option value="bidv">BIDV</option>
+                          
+                        </select>
+                    </div>
+                </div>                
         </div>
     </div>
 
