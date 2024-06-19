@@ -5,13 +5,22 @@
     left: 0;
 }
 
-.off-page{
-    display: none;
+.hidden{
+    display: none !important;
+}
+
+.open{
+    display: flex !important;
+}
+
+.show{
+    display: flex;
 }
 
 .monitor_1{
     width: 100%;
     height: 785px;
+    /* display: flex; */ 
     display: none;
     justify-content: center;
     align-items: center;
@@ -48,7 +57,7 @@
 
 
 .monitor_2{
-    display: flex;
+    display: none;
     flex-direction: column;
     height: 742px;
     background: url("/image/Background/background.jpg") no-repeat;
@@ -56,7 +65,7 @@
 
 }
 
-.monitor_2 .heading{
+.heading{
     display: flex;
     margin: 5px;
     background-color: rgba(92, 80, 51, 1);
@@ -69,7 +78,7 @@
     color: #ccc;
 }
 
-.monitor_2 .question{
+.question{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -100,7 +109,8 @@
 
 .container .sidebar-under{
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction:row-reverse;
+    justify-content: space-around;
 }
 
 
@@ -110,22 +120,35 @@
     grid-template-columns: 1fr 1fr; 
     gap: 10px; 
     width: 100%;
-    height: 100px;
+    height: 200px;
     text-align: center;
     cursor: pointer;
 }
 
-.answer > button{
+.answer .answer-buton{
     background-color: white;
     color: black;
-    width: 100%;
-    height: 100%;
+    width: 605px;
+    height: 80px;
     margin: 10px;
     line-height: 100px;
-    font-size: 30px;
+    font-size: 40px;
 }
 
-.answer button:hover{
+.answer-button{
+    font-size: 30px;
+}
+.answer-button-correct{
+    background-color: #7FFF7F;
+    color: white;
+}
+
+.answer-button-wrong{
+    background-color: #FF7F7F;
+    color: white;
+}
+
+.answer .answer-button:hover{
     cursor: pointer;
     background-color: DodgerBlue;
     color: white;
@@ -136,14 +159,14 @@
     cursor: pointer;
 }
 
-#score{
-    width: 139px;
-    height: 55px;
-    font-size: 25px;
-    border-radius: 5px; 
-    background-color: white;
-    color: black;
-    margin-right: 10px;
+#time-out{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 40px;
+    width: 430px;
+    height: 56px;
+    padding: 0 5px;
+    color:red;
+    background-color: lightblue;
 }
 
 .btn-funct span{
@@ -157,4 +180,48 @@
 .btn-funct span:hover{
     color:white;
     background-color: red;
+}
+
+.monitor_3{
+    background-image: url("/image/Background/bkgr.png");
+    background-repeat: no-repeat;
+    background-size: 1536px 742px;
+    opacity: 0.95;
+    height: 742px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.result-container {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.result-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.result-score {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.result-summary {
+    margin-bottom: 20px;
+}
+.button {
+    padding: 10px 20px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.button:hover {
+    background: #0056b3;
 }
