@@ -1,0 +1,160 @@
+*{
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+}
+
+.off-page{
+    display: none;
+}
+
+.monitor_1{
+    width: 100%;
+    height: 785px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: url('/image/Background/bgr_2.png') no-repeat center;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-title{
+    font-size: 50px;
+    margin-bottom: 5px;
+}
+
+.btn-start{
+    font-size: 35px;
+    border: 2px solid;
+    border-radius: 12%;
+    margin-top: 5px;
+}
+
+.btn-start:hover{
+    color: rgba(86, 48, 194, 0.78);
+    cursor: pointer;
+}
+
+#btn-start{
+    font-size: 30px;
+}
+
+
+.monitor_2{
+    display: flex;
+    flex-direction: column;
+    height: 742px;
+    background: url("/image/Background/background.jpg") no-repeat;
+    background-size: cover;
+
+}
+
+.monitor_2 .heading{
+    display: flex;
+    margin: 5px;
+    background-color: rgba(92, 80, 51, 1);
+    border-radius: 20px;
+}
+
+.heading .icon{
+    font-size: 80px;
+    padding: 0 20px;
+    color: #ccc;
+}
+
+.monitor_2 .question{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.monitor_2 .question p{
+    font-size: 15px;
+    color: lightblue;
+}
+
+.monitor_2 .question #question{
+    font-size: 50px;
+    color: beige;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+    align-items: center;
+    gap: 20px; 
+    width: 100%;
+    height: 590px;
+    max-width: 1200px;
+    margin: 10px auto;
+}
+
+.container .sidebar-under{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+
+
+.answer{
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px; 
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.answer > button{
+    background-color: white;
+    color: black;
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+    line-height: 100px;
+    font-size: 30px;
+}
+
+.answer button:hover{
+    cursor: pointer;
+    background-color: DodgerBlue;
+    color: white;
+}
+
+.btn-funct{
+    border-radius: 5px; 
+    cursor: pointer;
+}
+
+#score{
+    width: 139px;
+    height: 55px;
+    font-size: 25px;
+    border-radius: 5px; 
+    background-color: white;
+    color: black;
+    margin-right: 10px;
+}
+
+.btn-funct span{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 40px;
+    padding: 0 5px;
+    color:red;
+    background-color: lightblue;
+}
+
+.btn-funct span:hover{
+    color:white;
+    background-color: red;
+}
