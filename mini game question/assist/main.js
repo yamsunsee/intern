@@ -2,21 +2,27 @@ const BASE_URL = "https://api4interns.vercel.app/api/v1/questions";
 
 const quizElement = document.querySelector("#quiz");
 const resultsElement = document.querySelector("#results");
+
 const startElement = document.querySelector("#start-game");
-const resultsMessageElement = document.querySelector("#resultsMessage");
 const questionElement = document.querySelector("#question");
 const answerButtons = document.querySelectorAll('.answer-button');
-const nextButton = document.querySelector('#btn-next');
-const exitButton = document.querySelector('#btn-exit');
+
 const questionCounterElement = document.querySelector('#question-couter');
 const timerElement = document.querySelector('#time-out');
+
+const nextButton = document.querySelector('#btn-next');
+const exitButton = document.querySelector('#btn-exit');
 const nextQuiz = document.querySelector("#js-btn-next");
 
+// Khởi tạo các biến tạm thời -------------------------------------------------------------------------------------------------------
 let currentQuestionIndex = 0;
-let data = []; // Global variable to store fetched data
-let timer; // Variable to store the timer interval
-let nextQuestionTimeout; // Variable to store the next question timeout
+let data = []; // Biến toàn cục lưu trữ dữ liệu từ link API
+let timer; // Biến đếm thời gian
+let nextQuestionTimeout; // Biến lưu trữ thời gian câu tiếp theo hiện ra
+let answeredQuestionsCount = 0; // Biến số câu đã trả lời
+let correctAnswersCount = 0; // Bến đếm số câu đúng
 
+// Thiết lập kết nối API -------------------------------------------------------------------------------------------------------------
 const handleFetchData = async (url) => {
   try {
     const response = await fetch(url);
@@ -29,7 +35,7 @@ const handleFetchData = async (url) => {
   }
 };
 
-// Hàm để xáo trộn một mảng sử dụng thuật toán Fisher-Yates
+// Hàm để xáo trộn một mảng sử dụng thuật toán Fisher-Yates --------------------------------------------------------------------------
 const shuffleArray = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -38,7 +44,7 @@ const shuffleArray = (array) => {
   return array;
 };
 
-//Set up timer 
+// Thiết lập thời gian đếm ngược cho mỗi câu hỏi -------------------------------------------------------------------------------------
 const startTimer = (duration) => {
     let time = duration;
     timerElement.textContent = `Time left: ${time} seconds`;
@@ -49,27 +55,28 @@ const startTimer = (duration) => {
   
       if (time <= 0) {
         clearInterval(timer);
-        alert("Time's up!");
         nextQuestion();
       }
     }, 1000);
 };
 
 
-// Hàm hiển thị câu hỏi và các đáp án
+// Hàm hiển thị câu hỏi và các đáp án ------------------------------------------------------------------------------------------------
+
 const displayQuestion = (questionData) => {
 
-    // Clear any existing timers
-    clearInterval(timer);
-    clearTimeout(nextQuestionTimeout);
-
-    const shuffledData = shuffleArray(data);
-
-    questionData = shuffledData[0]; 
+  // Đặt lại bộ đếm thời gian
+  clearInterval(timer);
+  clearTimeout(nextQuestionTimeout);
+    
+  // Xáo trộn bộ câu hỏi
+  const shuffledData = shuffleArray(data);
+  questionData = shuffledData[0]; 
 
   if (questionElement) {
     questionElement.textContent = questionData.question;
   }
+  
 
   // Xáo trộn mảng các đáp án
   const shuffledAnswers = shuffleArray(questionData.answers);
@@ -81,10 +88,14 @@ const displayQuestion = (questionData) => {
         button.classList.remove('answer-button-correct', 'answer-button-wrong');
   
         button.onclick = () => {
+          answeredQuestionsCount++;
           if (answer === questionData.correctAnswer) {
             button.classList.add('answer-button-correct');
+            correctAnswersCount++;
+            console.log(correctAnswersCount);
           } else {
             button.classList.add('answer-button-wrong');
+            showResults();
         }
         nextQuestionTimeout = setTimeout(nextQuestion, 2000);
       };
@@ -95,39 +106,85 @@ const displayQuestion = (questionData) => {
   if (questionCounterElement) {
     questionCounterElement.textContent = `Question ${currentQuestionIndex + 1} of ${data.length}`;
   }
-//   startTimer(15);
+  startTimer(15);
 };
 
-// Hàm chuyển sang câu hỏi tiếp theo
+// Hàm xử lý giá trị hiển thị tạo trang Result ---------------------------------------------------------------------------------------
+
+const displayResults = (results) => {
+  const resultSummary = document.querySelector("#result-summary");
+  if (resultSummary) {
+    resultSummary.innerHTML = `
+      <p style="font-size: 20px; margin-bottom: 20px;">Total Questions: ${results.totalQuestions}</p>
+      <p style="font-size: 20px; margin-bottom: 20px;">Correct Answers: ${results.correctAnswers}</p>
+      <p style="font-size: 20px; margin-bottom: 20px;">Wrong Answers: ${results.wrongAnswers}</p>
+    `;
+  }
+};
+
+const displayScore = (scores) => {
+  const resultScore = document.querySelector("#result-score");
+  if (resultScore) {
+    resultScore.innerHTML = `<p style="font-size: 20px; margin-bottom: 20px;">Your Score: ${scores.score}</p>`;
+  }
+};
+
+
+// Các hàm chuyển trang -------------------------------------------------------------------------------------------------------------
+
 const nextQuestion = () => {
   currentQuestionIndex++;
   if (currentQuestionIndex < data.length) {
     displayQuestion(data[currentQuestionIndex]);
   } else {
     showResults();
+    
   }
 };
 
-// Hàm thoat den man hinh het qua
 const exitQuestion = () => {
-    showResults();
+  showResults();
 };
 
 const showResults = () => {
-    quizElement.classList.remove('open');
-    resultsElement.classList.remove('hidden');
-    startElement.classList.add('hidden');
-    resultsMessageElement.textContent = "Quiz is over. Here are your results!";
+  quizElement.classList.remove('open');
+  resultsElement.classList.remove('hidden');
+  startElement.classList.add('hidden');
+
+  // Hàm hiển thị kết quả
+  const totalQuestions = data.length;
+  const wrongAnswers = answeredQuestionsCount - correctAnswersCount;
+  const score = correctAnswersCount*10;
+  console.log(score);
+
+  const userResults = {
+    totalQuestions: totalQuestions,
+    correctAnswers: correctAnswersCount,
+    wrongAnswers: wrongAnswers,
+  };
+  const userScore = {
+    score: score,
+  };
+
+  // Hiển thị kết quả khi trang được tải
+  displayResults(userResults);
+  displayScore(userScore);
 };
 
 const showQuiz = () => {
-    quizElement.classList.add('open');
-    resultsElement.classList.add('hidden');
-    startElement.classList.add('hidden');
+  quizElement.classList.add('open');
+  resultsElement.classList.add('hidden');
+  startElement.classList.add('hidden');
+
+  currentQuestionIndex = 0;
+  correctAnswersCount = 0;  
+  answeredQuestionsCount = 0; 
+  displayQuestion(data[currentQuestionIndex]);
 };
 
 
-// Hàm chính để khởi tạo và xử lý dữ liệu
+// Hàm chính để khởi tạo và xử lý dữ liệu -------------------------------------------------------------------------------------------
+
 const main = async () => {
   try {
     data = await handleFetchData(BASE_URL);
