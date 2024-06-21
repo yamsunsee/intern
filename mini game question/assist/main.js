@@ -60,15 +60,14 @@ const shuffleArray = (array) => {
 
 
 
-
 // Thiết lập thời gian đếm ngược cho mỗi câu hỏi -------------------------------------------------------------------------------------
 const startTimer = (duration) => {
     let time = duration;
-    timerElement.textContent = `Time left: ${time} seconds`;
+    timerElement.textContent = `${time}`;
   
     timer = setInterval(() => {
       time--;
-      timerElement.textContent = `Time left: ${time} seconds`;
+      timerElement.textContent = `${time}`;
   
       if (time <= 0) {
         clearInterval(timer);
@@ -119,14 +118,14 @@ const displayQuestion = (questionData) => {
           } else {
             button.classList.add('answer-button-wrong');
         }
-        nextQuestionTimeout = setTimeout(nextQuestion, 5000);
+        nextQuestionTimeout = setTimeout(nextQuestion, 2000);
       };
     }
   });
 
   // Cập nhật số thứ tự câu hỏi
   if (questionCounterElement) {
-    questionCounterElement.textContent = `Question ${currentQuestionIndex + 1} of ${data.length}`;
+    questionCounterElement.textContent = ` ${currentQuestionIndex + 1} Trên ${data.length}`;
   }
   startTimer(15);
 };
@@ -139,9 +138,9 @@ const displayResults = (results) => {
   const resultSummary = document.querySelector("#result-summary");
   if (resultSummary) {
     resultSummary.innerHTML = `
-      <p style="font-size: 20px; margin-bottom: 20px;">Total Questions: ${results.totalQuestions}</p>
-      <p style="font-size: 20px; margin-bottom: 20px;">Correct Answers: ${results.correctAnswers}</p>
-      <p style="font-size: 20px; margin-bottom: 20px;">Wrong Answers: ${results.wrongAnswers}</p>
+      <p style="font-size: 20px; margin-bottom: 20px;">Tổng số câu hỏi: ${results.totalQuestions}</p>
+      <p style="font-size: 20px; margin-bottom: 20px;">Số câu trả lời đúng: ${results.correctAnswers}</p>
+      <p style="font-size: 20px; margin-bottom: 20px;">Số câu trả lời sai: ${results.wrongAnswers}</p>
     `;
   }
 };
@@ -149,7 +148,7 @@ const displayResults = (results) => {
 const displayScore = (scores) => {
   const resultScore = document.querySelector("#result-score");
   if (resultScore) {
-    resultScore.innerHTML = `<p style="font-size: 20px; margin-bottom: 20px;">Your Score: ${scores.score}</p>`;
+    resultScore.innerHTML = `<p style="font-size: 20px; margin-bottom: 20px;">Điểm số của bạn: ${scores.score}</p>`;
   }
 };
 
@@ -185,7 +184,7 @@ const showResults = () => {
   console.log(score);
 
   const userResults = {
-    totalQuestions: totalQuestions,
+    totalQuestions: totalQuestions ,
     correctAnswers: correctAnswersCount,
     wrongAnswers: wrongAnswers,
   };
