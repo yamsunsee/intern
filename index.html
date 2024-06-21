@@ -7,76 +7,89 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-<body onload="OnStart()">
+<body onload="on_start()">
     <div class="container">
-        <div class="screen" id="startscreen">
+        <div class="screen" id="start_screen">
             <div class="bgr_img" id="start_img"></div>
-            <div class="input-container">
-                <input type="text" id="username" placeholder="Nhập tên">
-                <button onclick="StartGame()">Bắt đầu</button>
+            <div class="input_container">
+                <input type="text" id="name" placeholder="Nhập tên">
+                <button onclick="start_game()">Bắt đầu</button>
             </div>
         </div>
-            <div class="screen" id="levelscreen">
+        <div class="screen" id="level_screen">
                 <div class="bgr_img" id="level_img"></div>
-                <div class="content-wrapper">
-                    <div class="left-pane"></div>
-                    <div class="right-pane">
-                        <div class="level-options">
+                <div class="content_wrapper">
+                    <div class="left_pane"></div>
+                    <div class="right_pane">
+                        <div class="level_options">
                             <h1>Hãy chọn mức độ của game:</h1>
-                            <button id="easy" onclick="chooseLevel('easy')">Dễ</button>
-                            <button id="medium" onclick="chooseLevel('medium')">Vừa</button>
-                            <button id="hard" onclick="chooseLevel('hard')">Khó</button>
+                            <button id="easy" onclick="choose_level('easy')">Dễ</button>
+                            <button id="medium" onclick="choose_level('medium')">Vừa</button>
+                            <button id="hard" onclick="choose_level('hard')">Khó</button>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="screen" id="gamescreen">
-                <div class="bgr_img" id="game_img"></div>
-                <div id="game">
-                    <div id="content-wrapper-game" class="content-wrapper">
-                        <div class="left-pane">
-                            <table id="info-table">
-                            
+        </div>
+        <div class="screen" id="game_screen">
+            <div class="bgr_img" id="game_img"></div>
+            <div id="game">
+                <div class="content_wrapper">
+                    <div class="left_pane_game">
+                        <div id="info_table_wrapper">
+                            <table id="info_table">
+                                <!-- Các hàng và cột của bảng -->
                             </table>
+                        </div>                        
+                    </div>
+                    <div class="right_pane_game">
+                        <div id="timer"></div>
+                        <div id="support" class="support_container">
+                            <button id="goi_btn" class="support_btn" onclick="use_goi()">
+                                <i class="fas fa-phone-alt"></i>
+                            </button>
+                            <button id="khangia_btn" class="support_btn" onclick="use_khangia()">
+                                <i class="fas fa-users"></i>
+                            </button>
+                            <button id="5050_btn" class="support_btn" onclick="use_5050()">
+                                <i class="fas fa-percent"></i>
+                            </button>
                         </div>
-                        <div class="right-pane-game">
-                            <div id="timer"></div>
-                            <div id="question-container">
-                                <p id="question"></p>
-                                <div id="answers" class="grid-container"></div>
-                                <div class="button-container">
-                                    <button id="stop-btn" onclick="stopGame()">Dừng cuộc chơi</button>
-                                    <button id="next-btn" onclick="loadNextQuestion()">Câu tiếp theo</button>
-                                </div>
+                        <div id="question_container">
+                            <p id="question"></p>
+                            <div id="answers" class="grid_container"></div>
+                            <div class="button_container">
+                                <button id="stop_btn" onclick="stop_game()">Dừng cuộc chơi</button>
+                                <button id="next_btn" onclick="load_next_question()">Câu tiếp theo</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
             
-        
-        <div id="resultScreen" class="screen">
-            <div class="content-wrapper">
-                <div class="left-pane-result">
+        <div class="screen" id="result_screen">
+            <div class="content_wrapper">
+                <div class="left_pane_result">
                     <h1>Kết quả của bạn</h1>
-                    <div id="resultSummary">
-                        <p id="correctCount">Số câu đúng: </p>
-                        <p id="incorrectCount">Số câu sai: </p>
-                        <p id="notanswerCount">Số câu chưa làm: </p>
+                    <div id="result_summary">
+                        <p id="correct_count">Số câu đúng: </p>
+                        <p id="incorrect_count">Số câu sai: </p>
+                        <p id="notanswer_count">Số câu chưa làm: </p>
                     </div>
-                    <div class="chart-container">
-                        <canvas id="resultChart"></canvas> 
+                    <div class="chart_container">
+                        <canvas id="result_chart"></canvas> 
                     </div>
-                    <button id="restartBtn" onclick="restartGame()">Chơi lại</button>
+                    <button id="restart_btn" onclick="restart_game()">Chơi lại</button>
                 </div>
-                <div class="right-pane-result">
-                    <h2 id="tienthuongnhanduoc">Số tiền bạn nhận được:</h2>
-                    <div class="account-info">
-                        <label for="accountNumber">Số tài khoản:</label>
-                        <input type="text" id="accountNumber" name="accountNumber" placeholder="Nhập số tài khoản">
+                <div class="right_pane_result">
+                    <h2 id="money_award">Số tiền bạn nhận được:</h2>
+                    <div class="account_info">
+                        <label for="account_number">Số tài khoản:</label>
+                        <input type="text" id="account_number" name="account_number" placeholder="Nhập số tài khoản">
                     </div>
-                    <div class="bank-selection">
+                    <div class="bank_selection">
                         <label for="bank">Chọn ngân hàng:</label>
                         <select id="bank" name="bank">
                             <option value="vietcombank">Vietcombank</option>
@@ -84,17 +97,15 @@
                             <option value="acb">ACB</option>
                             <option value="vietinbank">Vietinbank</option>
                             <option value="bidv">BIDV</option>
-                          
                         </select>
                     </div>
-                </div>                
-        </div>
+                </div>
+            </div>
     </div>
-
     <!-- Hộp thoại thông báo -->
     <div id="notification" class="notification hidden">
-        <p id="notification-message"></p>
-        <button onclick="closeNotification()">OK</button>
+        <p id="notification_message"></p>
+        <button onclick="close_notification()">OK</button>
     </div>
 
     <script src="script.js"></script>
