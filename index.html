@@ -45,14 +45,15 @@
                     </div>
                     <div class="right_pane_game">
                         <div id="timer"></div>
-                        <div id="support" class="support_container">
-                            <button id="goi_btn" class="support_btn" onclick="use_goi()">
+                        <div class="support_container">
+                            <div id ="question_index"></div>
+                            <button id="call_btn" class="support_btn" onclick="use_call()">
                                 <i class="fas fa-phone-alt"></i>
                             </button>
-                            <button id="khangia_btn" class="support_btn" onclick="use_khangia()">
+                            <button id="audience_btn" class="support_btn" onclick="use_audience()">
                                 <i class="fas fa-users"></i>
                             </button>
-                            <button id="5050_btn" class="support_btn" onclick="use_5050()">
+                            <button id="fifty_btn" class="support_btn" onclick="use_fifty()">
                                 <i class="fas fa-percent"></i>
                             </button>
                         </div>
@@ -81,6 +82,23 @@
                     <div class="chart_container">
                         <canvas id="result_chart"></canvas> 
                     </div>
+                    <div class="fix">
+                    <h2 id="money_award_fix">Số tiền bạn nhận được:</h2>
+                    <div class="account_info">
+                        <label for="account_number">Số tài khoản:</label>
+                        <input type="text" id="account_number" name="account_number" placeholder="Nhập số tài khoản">
+                    </div>
+                    <div class="bank_selection">
+                        <label for="bank">Chọn ngân hàng:</label>
+                        <select id="bank" name="bank">
+                            <option value="vietcombank">Vietcombank</option>
+                            <option value="techcombank">Techcombank</option>
+                            <option value="acb">ACB</option>
+                            <option value="vietinbank">Vietinbank</option>
+                            <option value="bidv">BIDV</option>
+                        </select>
+                    </div>
+                </div>
                     <button id="restart_btn" onclick="restart_game()">Chơi lại</button>
                 </div>
                 <div class="right_pane_result">
@@ -101,6 +119,7 @@
                     </div>
                 </div>
             </div>
+        
     </div>
     <!-- Hộp thoại thông báo -->
     <div id="notification" class="notification hidden">
