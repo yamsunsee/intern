@@ -114,7 +114,7 @@ body{
 
 .heading{
     display: flex;
-    margin: 5px 4px;
+    margin: 5px 20px;
     background-color: #3572EF;
     border-radius: 20px;
 }
@@ -224,11 +224,12 @@ body{
 @media only screen and (min-width: 1300px){
     body{
         background-size: cover;
+       background-attachment: fixed;
     }
 }
-
+/* (min-width: 600px) and  */
 /* Cho tablet */
-@media (min-width: 600px) and (max-width: 1300px){
+@media (max-width: 1300px){
     body {
        background-size: cover;
        background-attachment: fixed;
@@ -275,7 +276,8 @@ body{
 /* Cho mobile */
 @media only screen and (max-width: 600px){
     body {
-        background-size: auto auto;
+       background-attachment: fixed;
+       background-size:cover;
     }
 
     .title{
