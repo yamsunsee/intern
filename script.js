@@ -16,6 +16,12 @@ function show_notification(message) {
     notification_message.innerText = message;
     notification.classList.remove('hidden');
 }
+function show_notification_confirm(message) {
+    const notification = document.getElementById('notification_confirm');
+    const notification_message = document.getElementById('notification_message_confirm');
+    notification_message.innerText = message;
+    notification.classList.remove('hidden');
+}
 
 //Hàm đóng notification -----------------------------------------------------------------------------------------------
 function close_notification() {
@@ -24,14 +30,22 @@ function close_notification() {
     const notification_button = document.querySelector('.notification button');
     notification_button.onclick = close_notification; 
 }
-
+function continue_work() {
+    const notification = document.getElementById('notification_confirm');
+    notification.classList.add('hidden');
+}
+function cancel() {
+    const notification = document.getElementById('notification_confirm');
+    notification.classList.add('hidden');
+    document.getElementById('add_question_form').classList.add('hidden');
+}
 //Hiển thị start_screen khi vừa bắt đầu-----------------------------------------------------------------------------------------------
 function on_start() {
     var screen_elements = document.getElementsByClassName('screen');
     for (var i = 0; i < screen_elements.length; i++) {
         screen_elements[i].style.display = 'none';
     }
-    var start_screen_element = document.getElementById('start_screen');
+    var start_screen_element = document.getElementById('login_screen');
     start_screen_element.style.display = 'block';
 }
 
@@ -446,5 +460,228 @@ function draw_pie_chart(correct_count, incorrect_count, notanswer_count) {
                 }
             }
         });
+    }
+}
+/* Bạn là người chơi thì vào start screen------------------------------------------------------------------------------------------------------------------*/
+function login_as_player() {
+    document.getElementById('login_screen').style.display = 'none';
+    document.getElementById('start_screen').style.display = 'block';
+}
+/* Bạn là admin thì nhập mật khẩu------------------------------------------------------------------------------------------------------------------*/
+function show_admin_login() {
+    document.getElementById('admin_login').classList.remove('hidden');
+}
+/*Check mật khẩu--------------------------------------------------------------------------------------------------------------------*/
+function login_as_admin() {
+    const password = document.getElementById('admin_password').value;
+    if (password === '123456') {
+        document.getElementById('login_screen').style.display = 'none';
+        document.getElementById('admin_screen').style.display = 'block';
+    } else {
+        document.getElementById('error_message').innerText = 'Sai mật khẩu. Vui lòng thử lại.';
+    }
+}
+/*Lấy dữ liệu cho màn hình admin--------------------------------------------------------------------------------------------------------------------*/
+async function fetch_data_admin() {
+    try {
+        const response = await fetch(BASE_URL);
+        const data = await response.json();
+        if (data.status) {
+            questions = data.data;
+            display_admin_data(questions);
+        } else {
+            show_notification('Không thể tải câu hỏi!');
+        }
+    } catch (error) {
+        console.error('Error fetching questions:', error);
+        show_notification('Lỗi kết nối với API!');
+    }
+}
+// Hiển thị dữ liệu trong màn hình admin-----------------------------------------------------------------------------------------------
+function display_admin_data(questions) {
+    const admin_data_container = document.getElementById('admin_data');
+    admin_data_container.innerHTML = ''; 
+
+    questions.forEach((question, index) => {
+        const question_div = document.createElement('div');
+        question_div.classList.add('question_item');
+        question_div.setAttribute('data-id', question.id); 
+        question_div.innerHTML = `
+            <p><strong>ID:</strong> ${question.id}</p>  
+            <p><strong>Câu hỏi ${index + 1}:</strong> ${question.question}</p>
+            <p><strong>Đáp án:</strong></p>
+            <ul>
+                ${question.answers.map(answer => `<li>${answer}</li>`).join('')}
+            </ul>
+            <p><strong>Đáp án đúng:</strong> ${question.correctAnswer}</p>
+            <button onclick="delete_question_confirm('${question.id}')">Xóa câu hỏi</button>
+            <button onclick="edit_question('${question.id}')">Chỉnh sửa</button>
+        `;
+        admin_data_container.appendChild(question_div);
+    });
+}
+// Nút thêm câu hỏi hiện form thêm câu hỏi------------------------------------------------------------------------------------------------------------------
+function show_add_question_form() {
+    document.getElementById('add_question_form').classList.remove('hidden');
+}
+
+// Nút gửi câu hỏi muốn thêm------------------------------------------------------------------------------------------------------------------
+async function add_new_question() {
+    const new_question = document.getElementById('new_question').value;
+    const answer_1 = document.getElementById('answer_1').value;
+    const answer_2 = document.getElementById('answer_2').value;
+    const answer_3 = document.getElementById('answer_3').value;
+    const answer_4 = document.getElementById('answer_4').value;
+    const correctAnswer = document.getElementById('correct_answer').value;
+
+    if (!new_question || !answer_1 || !answer_2 || !answer_3 || !answer_4 || !correctAnswer) {
+        show_notification('Vui lòng điền đầy đủ thông tin cho tất cả các ô.');
+        return;
+    }
+    const answers = [answer_1, answer_2, answer_3, answer_4];
+    const questionData = {
+        question: new_question,
+        answers: answers,
+        correctAnswer: answers[correctAnswer.charCodeAt(0) - 65]  
+    };
+    try {
+        const response = await fetch(BASE_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(questionData)
+        });
+        const result = await response.json();
+        console.log(result);
+        show_notification('Thêm câu hỏi thành công!');
+        const notification_button = document.querySelector('.notification button');
+        notification_button.onclick = function() {
+            close_notification();
+            document.getElementById('add_question_form').classList.add('hidden');
+            fetch_data_admin();  
+        };
+
+    } catch (error) {
+        console.error('Error posting admin data:', error);
+    }
+}
+//Nút "Hủy" khi đang thêm câu hỏi----------------------------------------------------------------------------------------------------
+function cancel_add_new_question() {
+    show_notification_confirm('Bạn chắc chắn muốn hủy thêm câu hỏi này?');
+    const no_button = document.getElementById('No');
+    const yes_button = document.getElementById('Yes');
+
+    no_button.onclick = function() {
+        continue_work();
+    };
+
+    yes_button.onclick = function() {
+        cancel();
+    };
+}
+//Nhấn button xóa câu hỏi sẽ confirm việc xóa câu hỏi trước------------------------------------------------------------------------------------------------------------------
+async function delete_question_confirm(id) {
+    show_notification_confirm('Bạn chắc chắn muốn hủy thêm câu hỏi này?');
+    const no_button = document.getElementById('No');
+    const yes_button = document.getElementById('Yes');
+
+    no_button.onclick = function() {
+        continue_work();
+    };
+
+    yes_button.onclick = function() {
+        cancel();
+        delete_question(id);
+    };
+}
+//Xác nhận Ok thì xóa câu hỏi-----------------------------------------------------------------------------------------------------------------------------
+async function delete_question(id) {
+    try {
+        const response = await fetch(`${BASE_URL}/${id}`, {
+            method: 'DELETE'
+        });
+        const result = await response.json();
+        console.log(result);
+        fetch_data_admin(); 
+    } catch (error) {
+        console.error('Error deleting admin data:', error); 
+    }
+}
+//Nhấn nút chỉnh sửa câu hỏi-----------------------------------------------------------------------------------------------------------
+function edit_question(id) {
+    const question_element = document.querySelector(`.question_item[data-id="${id}"]`);
+    const question_text = question_element.querySelector('p').textContent;
+    const answers_list = Array.from(question_element.querySelectorAll('ul li')).map(li => li.textContent.trim());
+    let correct_answer_element = null;
+    const childNodes = question_element.childNodes;
+    for (let i = 0; i < childNodes.length; i++) {
+        const node = childNodes[i];
+        if (node.nodeName === 'P' && node.textContent.trim().startsWith('Đáp án đúng:')) {
+            correct_answer_element = node;
+            break;
+        }
+    }
+    if (correct_answer_element) {
+        const correct_answer = correct_answer_element.textContent.trim().replace('Đáp án đúng:', '');
+        const edit_form = document.createElement('div');
+        edit_form.innerHTML = `
+            <h3>Chỉnh sửa câu hỏi</h3>
+            <label for="edit_question_${id}">Câu hỏi:</label>
+            <input type="text" id="edit_question_${id}" value="${question_text}">
+            <label for="edit_answer_1_${id}">Đáp án A:</label>
+            <input type="text" id="edit_answer_1_${id}" value="${answers_list[0]}">
+            <label for="edit_answer_2_${id}">Đáp án B:</label>
+            <input type="text" id="edit_answer_2_${id}" value="${answers_list[1]}">
+            <label for="edit_answer_3_${id}">Đáp án C:</label>
+            <input type="text" id="edit_answer_3_${id}" value="${answers_list[2]}">
+            <label for="edit_answer_4_${id}">Đáp án D:</label>
+            <input type="text" id="edit_answer_4_${id}" value="${answers_list[3]}">
+            <label for="edit_correct_answer_${id}">Đáp án đúng:</label>
+            <input type="text" id="edit_correct_answer_${id}" value="${correct_answer}">
+            <button onclick="save_edit_question('${id}')">Lưu</button>
+            <button onclick="cancel_edit_question('${id}')">Hủy</button>
+        `;
+        question_element.innerHTML = '';
+        question_element.appendChild(edit_form);
+    } else {
+        console.error('Không tìm thấy phần tử chứa đáp án đúng.');
+        show_notification('Có lỗi khi chỉnh sửa câu hỏi.');
+    }
+}
+//Hủy chỉnh sửa câu hỏi-------------------------------------------------------------------------------------------------------------
+function cancel_edit_question(){
+    fetch_data_admin();
+}
+//Lưu lại bản vừa chỉnh sửa của câu hỏi-------------------------------------------------------------------------------------------------
+async function save_edit_question(id) {
+    const edited_question = document.getElementById(`edit_question_${id}`).value;
+    const edited_answer_1 = document.getElementById(`edit_answer_1_${id}`).value;
+    const edited_answer_2 = document.getElementById(`edit_answer_2_${id}`).value;
+    const edited_answer_3 = document.getElementById(`edit_answer_3_${id}`).value;
+    const edited_answer_4 = document.getElementById(`edit_answer_4_${id}`).value;
+    const edited_correct_answer = document.getElementById(`edit_correct_answer_${id}`).value;
+
+    const editedAnswers = [edited_answer_1, edited_answer_2, edited_answer_3, edited_answer_4];
+    const questionData = {
+        question: edited_question,
+        answers: editedAnswers,
+        correctAnswer: edited_correct_answer
+    };
+
+    try {
+        const response = await fetch(`${BASE_URL}/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(questionData)
+        });
+        const result = await response.json();
+        console.log(result);
+        fetch_data_admin();
+    } catch (error) {
+        console.error('Error updating question:', error);
+        show_notification('Có lỗi xảy ra khi cập nhật câu hỏi.');
     }
 }

@@ -22,3 +22,5 @@
 - Thứ 7 (22/6): Tiếp tục làm Ai là triệu phú.
 => + Thêm các nút tính năng trợ giúp.
    + Chỉnh responsive.
+
+Password cho adminscreen là "123456"

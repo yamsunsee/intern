@@ -42,7 +42,9 @@ button:hover {
 .notification.hidden {
     display: none;
 }
-
+.hidden{
+    display: none;
+}
 
 /*Các class lớn----------------------------------------------------------------------------------------------------------------------*/
 .container {
@@ -95,7 +97,136 @@ button:hover {
 #game_img {
     background-image: url('img/background_game.jpg');
 }
+#login_img{
+    background-image: url('img/background_login.jpg');
+}
 
+/*CSS cho login_screen------------------------------------------------------------------------------------------------------------------------*/
+#login_screen {
+    text-align: center;
+    height: 100vh;
+}
+
+.login_element {
+    padding: 10px;
+    margin-top:55vh;
+}
+
+button {
+    margin: 5px;
+}
+
+#admin_login {
+    margin-top: 10px;
+}
+#admin_password{
+    font-size: 19px;
+    height: 50px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* CSS cho admin_screen--------------------------------------------------------------------------------------------------------------- */
+#admin_screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    margin-top: 20px;
+    text-align: center;
+    
+}
+
+.admin_element {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(22, 1, 250, 0.2);
+    min-height: 100vh;
+    margin: 20px 10px;
+}
+
+ .admin_element button {
+    padding: 10px 20px;
+    font-size: 23px;
+    margin-bottom:15px;
+    margin-top: 10px;
+
+} 
+.question_item button {
+    font-size: 17px;
+}
+.question_item {
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 25px;
+    text-align: left;
+    font-size: 19px;
+    border: 1px solid #8b8b8b;
+    margin-left: 15px;
+    margin-right: 15px; 
+    flex-direction: column;
+}
+
+.question_item p {
+    margin: 10px 0;
+}
+
+.question_item ul li {
+    margin-left: 20px;
+}
+
+#add_question_form {
+    padding: 10px;
+    padding-bottom: 0px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(0, 4, 255, 0.1); 
+    margin-bottom: 15px;
+    margin-left: 250px;
+    margin-right:250px;
+}
+
+#add_question_form label {
+    margin-top: 10px;
+}
+
+#add_question_form input,
+#add_question_form select {
+    margin-top: 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+.button_container_admin {
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.button_container_admin button {
+    font-size: 18px;
+}
+label {
+    text-align: left;
+    font-size:18px;
+}
+input[type="text" i]{
+    font-size: 15px;
+}
+h3{
+    font-size: 21px;
+}
+.button_confirm{
+    flex-direction: row;
+}
 /*CSS cho start_screen----------------------------------------------------------------------------------------------------------------*/
 #name {
     padding: 15px; 
@@ -112,7 +243,7 @@ button:hover {
 
 /*CSS cho level_screen----------------------------------------------------------------------------------------------------------------*/
 .left_pane, .right_pane {    
-    flex: 1; /* Mỗi phần chiếm 50% */
+    flex: 1; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -188,8 +319,8 @@ button:hover {
 }
 #answers {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* hai cột có (1fr) chiều rộng bằng nhau */
-    gap: 10px; /* Khoảng cách giữa các ô */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; 
     margin-bottom: 20px;
 }
 #answers button {
@@ -1023,11 +1154,6 @@ display:none;
         margin-bottom: 20px; 
         margin-top: 20px;
     }
-    /* #question_index{
-        font-size: 25px;
-        padding: 5px;
-        margin-right: 700px;
-    } */
     #result_screen h1 {
         font-size: 45px;
     }
