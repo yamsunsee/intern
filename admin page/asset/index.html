@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/image/logo-web.png">
+<title>Admin Panel</title>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div id="admin-panel">
+    <div class="screen">
+        <div class="screen-search">
+            <div class="icon">
+                <i class='bx bx-code-alt'></i>
+            </div>
+            <h2> <span>ADMIN</span>  PANEL</h2>
+            <div class="form-input">
+                <input type="text" id="search-input" placeholder="Search....">
+                <button class="search-btn" id="search-btn" type="submit"><i class='bx bx-search' ></i></button>
+            </div>
+        </div>
+        <div class="screen-title">
+            <button id="btn-add-question" >Tạo câu hỏi mới</button>
+            <img class="image" src="/image/5052.png_860.png" alt="Hinh anh Logo">
+        </div>
+    </div>
+    
+    <div id="questions-list">
+        <!-- Danh sách câu trả lời được đặt ở đây -->
+    </div>
+
+    <!-- Modal cho tạo thêm hoặc chỉnh sửa câu hỏi -->
+    <div id="question-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Tạo câu hỏi mới</h2>
+            <form id="question-form">
+                <label for="question-text">Câu hỏi:</label>
+                <input type="text" id="question-text" name="question-text" required>
+                
+                <label for="answers">Câu trả lời:</label>
+                <div id="answers-container">
+                    <input type="text" class="answer" name="answer" required>
+                    <input type="text" class="answer" name="answer" required>
+                    <input type="text" class="answer" name="answer" required>
+                    <input type="text" class="answer" name="answer" required>
+                </div>
+                
+                <label for="correct-answer">Câu trả lời đúng:</label>
+                <select id="correct-answer" name="correct-answer" required>
+                    <option value="0">Câu 1</option>
+                    <option value="1">Câu 2</option>
+                    <option value="2">Câu 3</option>
+                    <option value="3">Câu 4</option>
+                </select>
+
+                <button type="submit" id="save-question">Lưu</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal cho việc xác nhận xóa câu hỏi  -->
+    <div id="confirm-modal" class="modal"></div>
+
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
