@@ -486,14 +486,14 @@ async function fetch_data_admin() {
     const loading = document.getElementById('loading');
     loading.classList.remove('hidden');
     try {
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 1500));
         const response = await fetch(BASE_URL);
         const data = await response.json();
 
         if (data.status) {
             questions = data.data;
             display_admin_data(questions);
-            show_notification(`Số lượng câu hỏi hiện tại: ${questions.length}.`);
+            show_notification(`Số lượng câu hỏi hiện tại: ${questions.length}`);
         } else {
             show_notification('Không thể tải câu hỏi!');
         }
@@ -515,8 +515,8 @@ function display_admin_data(questions) {
         question_div.classList.add('question_item');
         question_div.setAttribute('data-id', question.id); 
         question_div.innerHTML = `
-            <p><strong>ID:</strong> ${question.id}</p>  
-            <p><strong>Câu hỏi: </strong>${question.question}</p>
+
+            <p class="question_text"><strong>Câu hỏi ${index + 1}:</strong> ${question.question}</p>
             <p><strong>Đáp án:</strong></p>
             <ul>
                 ${question.answers.map(answer => `<li>${answer}</li>`).join('')}
@@ -528,40 +528,62 @@ function display_admin_data(questions) {
         admin_data_container.appendChild(question_div);
     });
 }
-// Hàm để tìm kiếm câu hỏi--------------------------------------------------------------------------------------------------------------
+
+//Hàm tìm kiếm-------------------------------------------------------------------------------------------------------------------------
+let search_results = [];
+let current_index = 0;
 function search_question() {
     const search = document.getElementById('search_input').value.toLowerCase().trim();
-    
     if (!search) {
         show_notification('Hãy nhập từ khóa cho câu hỏi cần tìm.');
         return;
     }
-
     const questions = document.querySelectorAll('.question_item');
-
-    let found = false;
+    search_results = [];
+    current_index = 0;
     questions.forEach(question => {
-        const question_text_element = question.querySelector('p:nth-of-type(2)'); 
+        const question_text_element = question.querySelector('p:nth-of-type(1)');
         if (question_text_element) {
             const question_text = question_text_element.textContent.toLowerCase();
             if (question_text.includes(search)) {
-                question.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                question.style.backgroundColor = '#ffff99'; 
-                found = true;
-            } else {
-                question.style.backgroundColor = ''; 
+                const regex = new RegExp(`(${search})`, 'gi');
+                const highlighted_text = question_text_element.innerHTML.replace(regex, '<span class="highlight">$1</span>');
+                question_text_element.innerHTML = highlighted_text;
+                const highlights = question_text_element.querySelectorAll('.highlight');
+                highlights.forEach(highlight => {
+                    search_results.push(highlight);
+                });
             }
         }
     });
 
-    if (!found) {
+    if (search_results.length > 0) {
+        scroll_to_result(0);
+    } else {
         show_notification('Không tìm thấy câu hỏi nào phù hợp với từ khóa.');
     }
 }
+//Hàm cuộn tới vị trí có phần tử cần tìm kiếm-----------------------------------------------------------------------------------------
+function scroll_to_result(index) {
+    if (search_results.length === 0) return;
+    search_results.forEach(element => element.classList.remove('current-result'));
+    current_index = index;
+    search_results[current_index].classList.add('current-result');
+    search_results[current_index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+document.getElementById('search_input').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        current_index = (current_index + 1) % search_results.length;
+        scroll_to_result(current_index);
+    }
+});
+
 
 // Nút thêm câu hỏi hiện form thêm câu hỏi------------------------------------------------------------------------------------------------------------------
 function show_add_question_form() {
     document.getElementById('add_question_form').classList.remove('hidden');
+    const add_form = document.getElementById('add_question_form');
+    add_form .scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 // Nút gửi câu hỏi muốn thêm------------------------------------------------------------------------------------------------------------------
@@ -621,7 +643,7 @@ function cancel_add_new_question() {
 }
 //Nhấn button xóa câu hỏi sẽ confirm việc xóa câu hỏi trước------------------------------------------------------------------------------------------------------------------
 async function delete_question_confirm(id) {
-    show_notification_confirm('Bạn chắc chắn muốn hủy thêm câu hỏi này?');
+    show_notification_confirm('Bạn chắc chắn muốn xóa câu hỏi này?');
     const no_button = document.getElementById('No');
     const yes_button = document.getElementById('Yes');
 
@@ -650,7 +672,7 @@ async function delete_question(id) {
 // Nhấn nút chỉnh sửa câu hỏi
 function edit_question(id) {
     const question_element = document.querySelector(`.question_item[data-id="${id}"]`);
-    const question_text = question_element.querySelector('p:nth-of-type(2)').textContent.replace('Câu hỏi:', '').trim();
+    const question_text = question_element.querySelector('p.question_text').textContent.replace(/Câu hỏi \d+:/, '').trim();
     const answers_list = Array.from(question_element.querySelectorAll('ul li')).map(li => li.textContent.trim());
     let correct_answer_element = null;
     const childNodes = question_element.childNodes;
