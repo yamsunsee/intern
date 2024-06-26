@@ -539,6 +539,13 @@ function search_question() {
         return;
     }
     const questions = document.querySelectorAll('.question_item');
+    questions.forEach(question => {
+        const question_text_element = question.querySelector('p:nth-of-type(1)');
+        if (question_text_element) {
+            const original_text = question_text_element.textContent;
+            question_text_element.innerHTML = original_text; 
+        }
+    });
     search_results = [];
     current_index = 0;
     questions.forEach(question => {
@@ -556,22 +563,23 @@ function search_question() {
             }
         }
     });
-
     if (search_results.length > 0) {
+        document.getElementById("search_button").blur();
         scroll_to_result(0);
     } else {
         show_notification('Không tìm thấy câu hỏi nào phù hợp với từ khóa.');
     }
 }
-//Hàm cuộn tới vị trí có phần tử cần tìm kiếm-----------------------------------------------------------------------------------------
+//Hàm scroll tới kết quả tìm kiếm--------------------------------------------------------------------------------------------
 function scroll_to_result(index) {
     if (search_results.length === 0) return;
-    search_results.forEach(element => element.classList.remove('current-result'));
+    search_results.forEach(element => element.classList.remove('current_result'));
     current_index = index;
-    search_results[current_index].classList.add('current-result');
+    search_results[current_index].classList.add('current_result');
     search_results[current_index].scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
-document.getElementById('search_input').addEventListener('keydown', function(event) {
+//Hàm lắng nghe sự kiện nhấn nút enter để scroll tới kết quả tìm kiếm tiếp theo-------------------------------------------------
+document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
         current_index = (current_index + 1) % search_results.length;
         scroll_to_result(current_index);
