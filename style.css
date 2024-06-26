@@ -169,7 +169,6 @@ button {
     border: 1px solid #8b8b8b;
     margin-left: 15px;
     margin-right: 15px; 
-    flex-direction: column;
 }
 
 .question_item p {
@@ -217,15 +216,32 @@ button {
 label {
     text-align: left;
     font-size:18px;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
 }
 input[type="text" i]{
-    font-size: 15px;
+    font-size: 17px;
+    width: 100%;
+    margin: 5px;
 }
 h3{
     font-size: 21px;
 }
 .button_confirm{
     flex-direction: row;
+}
+.edit_button_container{
+    margin:0px;
+}
+#search_input{
+    margin-bottom: 15px;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: left;
+    font-size: 19px;
+    border: 1px solid #8b8b8b;
+    width: 100vh;
 }
 /*CSS cho start_screen----------------------------------------------------------------------------------------------------------------*/
 #name {
@@ -586,7 +602,21 @@ display:none;
     .bank_selection{
         margin-top: 15px;
     }
+    #add_question_form {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    #search_input {
+        width: 30vh;
+    }
+    .admin_element button {
+        font-size: 14px;
+    }
+    .login_element button{
+        font-size: 10px;
+    }
 } 
+
 
 @media all and (min-width: 480px) and (max-width: 600px)
 {
@@ -672,6 +702,16 @@ display:none;
     }
     .bank_selection{
         margin-top: 15px;
+    }
+    #add_question_form {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    #search_input {
+        width: 40vh;
+    }
+    .admin_element button {
+        font-size: 17px;
     }
 } 
 @media all and (min-width: 600px) and (max-width: 768px)
@@ -766,6 +806,16 @@ display:none;
     }
     .bank_selection{
         margin-top: 15px;
+    }
+    #add_question_form {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+    #search_input {
+        width: 40vh;
+    }
+    .admin_element button {
+        font-size: 17px;
     }
 } 
 @media all and (min-width: 768px) and (max-width: 800px)
@@ -874,6 +924,10 @@ display:none;
     #result_summary{
         font-size: 18px;
     }
+    #add_question_form {
+        margin-left: 100px;
+        margin-right: 100px;
+    }
 }
     @media all and (min-width: 800px) and (max-width: 1025px)
     {
@@ -981,6 +1035,17 @@ display:none;
         #result_summary{
             font-size: 18px;
         }
+        #add_question_form {
+            margin-left: 100px;
+            margin-right: 100px;
+        }   
+        #search_input {
+            width: 40vh;
+        }
+        .admin_element button {
+            font-size: 17px;
+        }
+
 }
 @media all and (min-width: 1025px) and (max-width: 1280px)
 {

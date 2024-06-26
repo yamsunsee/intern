@@ -23,4 +23,3 @@
    + Thêm các nút tính năng trợ giúp.
    + Chỉnh responsive.
 
-Password cho adminscreen là "123456"

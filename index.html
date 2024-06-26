@@ -11,6 +11,7 @@
 </head>
 <body onload="on_start()">
     <div class="container">
+        <!-- loginscreen---------------------------------------------------------------------------------------------------- -->
         <div class="screen" id="login_screen">
             <div class="bgr_img" id="login_img"></div>
             <div class="login_element">
@@ -23,9 +24,12 @@
             </div>
         </div>
         </div>
+        <!-- adminscreen---------------------------------------------------------------------------------------------------- -->
         <div class="screen" id="admin_screen">
             <div class="header_design" id="admin_header"></div> 
             <div class="admin_element">
+                <input type="text" id="search_input" placeholder="Nhập từ khóa để tìm kiếm câu hỏi">
+                <button onclick="search_question()">Tìm kiếm câu hỏi</button>
                 <button onclick="fetch_data_admin()">Lấy dữ liệu</button>
                 <button onclick="show_add_question_form()">Thêm câu hỏi</button>
                 <div id="add_question_form" class="hidden">
@@ -61,7 +65,7 @@
                 <div id="admin_data" ></div>
             </div>
         </div>
-        
+        <!-- startscreen---------------------------------------------------------------------------------------------------- -->
         <div class="screen" id="start_screen">
             <div class="bgr_img" id="start_img"></div>
             <div class="input_container">
@@ -83,6 +87,7 @@
                     </div>
                 </div>
         </div>
+        <!-- gamescreen---------------------------------------------------------------------------------------------------- -->
         <div class="screen" id="game_screen">
             <div class="bgr_img" id="game_img"></div>
             <div id="game">
@@ -119,7 +124,7 @@
                 </div>
             </div>
         </div>
-            
+        <!-- resultscreen---------------------------------------------------------------------------------------------------- -->
         <div class="screen" id="result_screen">
             <div class="content_wrapper">
                 <div class="left_pane_result">

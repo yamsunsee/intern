@@ -489,6 +489,7 @@ async function fetch_data_admin() {
         if (data.status) {
             questions = data.data;
             display_admin_data(questions);
+            show_notification(`Số lượng câu hỏi hiện tại: ${questions.length}.`);
         } else {
             show_notification('Không thể tải câu hỏi!');
         }
@@ -508,7 +509,7 @@ function display_admin_data(questions) {
         question_div.setAttribute('data-id', question.id); 
         question_div.innerHTML = `
             <p><strong>ID:</strong> ${question.id}</p>  
-            <p><strong>Câu hỏi ${index + 1}:</strong> ${question.question}</p>
+            <p><strong>Câu hỏi: </strong>${question.question}</p>
             <p><strong>Đáp án:</strong></p>
             <ul>
                 ${question.answers.map(answer => `<li>${answer}</li>`).join('')}
@@ -520,6 +521,37 @@ function display_admin_data(questions) {
         admin_data_container.appendChild(question_div);
     });
 }
+// Hàm để tìm kiếm câu hỏi--------------------------------------------------------------------------------------------------------------
+function search_question() {
+    const search = document.getElementById('search_input').value.toLowerCase().trim();
+    
+    if (!search) {
+        show_notification('Hãy nhập từ khóa cho câu hỏi cần tìm.');
+        return;
+    }
+
+    const questions = document.querySelectorAll('.question_item');
+
+    let found = false;
+    questions.forEach(question => {
+        const question_text_element = question.querySelector('p:nth-of-type(2)'); 
+        if (question_text_element) {
+            const question_text = question_text_element.textContent.toLowerCase();
+            if (question_text.includes(search)) {
+                question.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                question.style.backgroundColor = '#ffff99'; 
+                found = true;
+            } else {
+                question.style.backgroundColor = ''; 
+            }
+        }
+    });
+
+    if (!found) {
+        show_notification('Không tìm thấy câu hỏi nào phù hợp với từ khóa.');
+    }
+}
+
 // Nút thêm câu hỏi hiện form thêm câu hỏi------------------------------------------------------------------------------------------------------------------
 function show_add_question_form() {
     document.getElementById('add_question_form').classList.remove('hidden');
@@ -611,7 +643,7 @@ async function delete_question(id) {
 //Nhấn nút chỉnh sửa câu hỏi-----------------------------------------------------------------------------------------------------------
 function edit_question(id) {
     const question_element = document.querySelector(`.question_item[data-id="${id}"]`);
-    const question_text = question_element.querySelector('p').textContent;
+    const question_text = question_element.querySelector('p:nth-of-type(2)').textContent.replace('Câu hỏi:', '').trim();
     const answers_list = Array.from(question_element.querySelectorAll('ul li')).map(li => li.textContent.trim());
     let correct_answer_element = null;
     const childNodes = question_element.childNodes;
@@ -639,8 +671,10 @@ function edit_question(id) {
             <input type="text" id="edit_answer_4_${id}" value="${answers_list[3]}">
             <label for="edit_correct_answer_${id}">Đáp án đúng:</label>
             <input type="text" id="edit_correct_answer_${id}" value="${correct_answer}">
-            <button onclick="save_edit_question('${id}')">Lưu</button>
-            <button onclick="cancel_edit_question('${id}')">Hủy</button>
+            <div class="edit_button_container">
+                <button id="save_button_${id}" onclick="save_edit_question_confirm('${id}')">Lưu</button>
+                <button id="cancel_button_${id}" onclick="cancel_edit_question('${id}')">Hủy</button>
+            </div>
         `;
         question_element.innerHTML = '';
         question_element.appendChild(edit_form);
@@ -649,9 +683,35 @@ function edit_question(id) {
         show_notification('Có lỗi khi chỉnh sửa câu hỏi.');
     }
 }
+
 //Hủy chỉnh sửa câu hỏi-------------------------------------------------------------------------------------------------------------
 function cancel_edit_question(){
-    fetch_data_admin();
+    show_notification_confirm('Bạn chắc chắn muốn hủy chỉnh sửa câu hỏi này?');
+    const no_button = document.getElementById('No');
+    const yes_button = document.getElementById('Yes');
+
+    no_button.onclick = function() {
+        continue_work();
+    };
+
+    yes_button.onclick = function() {
+        cancel();
+        fetch_data_admin();
+    };
+}
+//Confirm trước khi lưu lại bản chỉnh sửa---------------------------------------------------------------------------------------------
+async function save_edit_question_confirm(id) {
+    show_notification_confirm('Bạn chắc chắn muốn lưu bản chỉnh sửa này?');
+    const no_button = document.getElementById('No');
+    const yes_button = document.getElementById('Yes');
+    no_button.onclick = function() {
+        continue_work();
+    };
+
+    yes_button.onclick = function() {
+        cancel();
+        save_edit_question(id)
+    };
 }
 //Lưu lại bản vừa chỉnh sửa của câu hỏi-------------------------------------------------------------------------------------------------
 async function save_edit_question(id) {
@@ -668,7 +728,6 @@ async function save_edit_question(id) {
         answers: editedAnswers,
         correctAnswer: edited_correct_answer
     };
-
     try {
         const response = await fetch(`${BASE_URL}/${id}`, {
             method: 'PUT',
