@@ -481,11 +481,15 @@ function login_as_admin() {
         document.getElementById('error_message').innerText = 'Sai mật khẩu. Vui lòng thử lại.';
     }
 }
-/*Lấy dữ liệu cho màn hình admin--------------------------------------------------------------------------------------------------------------------*/
+// Lấy dữ liệu trong màn hình admin---------------------------------------------------------------------------------------------
 async function fetch_data_admin() {
+    const loading = document.getElementById('loading');
+    loading.classList.remove('hidden');
     try {
+        await new Promise(resolve => setTimeout(resolve, 3000));
         const response = await fetch(BASE_URL);
         const data = await response.json();
+
         if (data.status) {
             questions = data.data;
             display_admin_data(questions);
@@ -496,8 +500,11 @@ async function fetch_data_admin() {
     } catch (error) {
         console.error('Error fetching questions:', error);
         show_notification('Lỗi kết nối với API!');
+    } finally {
+        loading.classList.add('hidden');
     }
 }
+
 // Hiển thị dữ liệu trong màn hình admin-----------------------------------------------------------------------------------------------
 function display_admin_data(questions) {
     const admin_data_container = document.getElementById('admin_data');
@@ -640,7 +647,7 @@ async function delete_question(id) {
         console.error('Error deleting admin data:', error); 
     }
 }
-//Nhấn nút chỉnh sửa câu hỏi-----------------------------------------------------------------------------------------------------------
+// Nhấn nút chỉnh sửa câu hỏi
 function edit_question(id) {
     const question_element = document.querySelector(`.question_item[data-id="${id}"]`);
     const question_text = question_element.querySelector('p:nth-of-type(2)').textContent.replace('Câu hỏi:', '').trim();
@@ -670,7 +677,12 @@ function edit_question(id) {
             <label for="edit_answer_4_${id}">Đáp án D:</label>
             <input type="text" id="edit_answer_4_${id}" value="${answers_list[3]}">
             <label for="edit_correct_answer_${id}">Đáp án đúng:</label>
-            <input type="text" id="edit_correct_answer_${id}" value="${correct_answer}">
+            <select id="edit_correct_answer_${id}" >
+                <option value="${answers_list[0]}" ${correct_answer === answers_list[0] ? 'selected' : ''}>A</option>
+                <option value="${answers_list[1]}" ${correct_answer === answers_list[1] ? 'selected' : ''}>B</option>
+                <option value="${answers_list[2]}" ${correct_answer === answers_list[2] ? 'selected' : ''}>C</option>
+                <option value="${answers_list[3]}" ${correct_answer === answers_list[3] ? 'selected' : ''}>D</option>
+            </select>
             <div class="edit_button_container">
                 <button id="save_button_${id}" onclick="save_edit_question_confirm('${id}')">Lưu</button>
                 <button id="cancel_button_${id}" onclick="cancel_edit_question('${id}')">Hủy</button>
@@ -684,8 +696,8 @@ function edit_question(id) {
     }
 }
 
-//Hủy chỉnh sửa câu hỏi-------------------------------------------------------------------------------------------------------------
-function cancel_edit_question(){
+// Hủy chỉnh sửa câu hỏi
+function cancel_edit_question(id) {
     show_notification_confirm('Bạn chắc chắn muốn hủy chỉnh sửa câu hỏi này?');
     const no_button = document.getElementById('No');
     const yes_button = document.getElementById('Yes');
@@ -699,21 +711,24 @@ function cancel_edit_question(){
         fetch_data_admin();
     };
 }
-//Confirm trước khi lưu lại bản chỉnh sửa---------------------------------------------------------------------------------------------
+
+// Confirm trước khi lưu lại bản chỉnh sửa
 async function save_edit_question_confirm(id) {
     show_notification_confirm('Bạn chắc chắn muốn lưu bản chỉnh sửa này?');
     const no_button = document.getElementById('No');
     const yes_button = document.getElementById('Yes');
+
     no_button.onclick = function() {
         continue_work();
     };
 
     yes_button.onclick = function() {
         cancel();
-        save_edit_question(id)
+        save_edit_question(id);
     };
 }
-//Lưu lại bản vừa chỉnh sửa của câu hỏi-------------------------------------------------------------------------------------------------
+
+// Lưu lại bản vừa chỉnh sửa của câu hỏi
 async function save_edit_question(id) {
     const edited_question = document.getElementById(`edit_question_${id}`).value;
     const edited_answer_1 = document.getElementById(`edit_answer_1_${id}`).value;
@@ -728,6 +743,7 @@ async function save_edit_question(id) {
         answers: editedAnswers,
         correctAnswer: edited_correct_answer
     };
+
     try {
         const response = await fetch(`${BASE_URL}/${id}`, {
             method: 'PUT',
@@ -744,3 +760,4 @@ async function save_edit_question(id) {
         show_notification('Có lỗi xảy ra khi cập nhật câu hỏi.');
     }
 }
+

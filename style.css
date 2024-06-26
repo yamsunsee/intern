@@ -17,6 +17,18 @@ button:hover {
     background-color: #1e0778; 
     color: rgb(252, 249, 249); 
 }
+#loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(246, 99, 99, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 10; 
+    font-size: 20px ;
+}
+
 
 /* CSS cho notification--------------------------------------------------------------------------------------------------------------*/
 .notification {
@@ -242,6 +254,12 @@ h3{
     font-size: 19px;
     border: 1px solid #8b8b8b;
     width: 100vh;
+}
+.question_item select {
+    font-size: 15px;
+    padding: 5px;
+    margin-left: 5px;
+    width: 100%;
 }
 /*CSS cho start_screen----------------------------------------------------------------------------------------------------------------*/
 #name {
