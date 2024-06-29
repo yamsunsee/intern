@@ -32,6 +32,7 @@
                 <button id ="search_button" onclick="search_question()">Tìm kiếm câu hỏi</button>
                 <button onclick="fetch_data_admin()">Lấy dữ liệu</button>
                 <button onclick="show_add_question_form()">Thêm câu hỏi</button>
+                <button onclick="log_out_confirm()">Đăng xuất</button>
             </div>
                 <div id="add_question_form" class="hidden">
                     <h3>Thêm câu hỏi mới</h3>
@@ -100,18 +101,18 @@
                     </div>
                     <div class="right_pane_game">
                         <div id="timer"></div>
-                        <div class="support_container">
-                            <div id ="question_index"></div>
-                            <button id="call_btn" class="support_btn" onclick="use_call()">
-                                <i class="fas fa-phone-alt"></i>
-                            </button>
-                            <button id="audience_btn" class="support_btn" onclick="use_audience()">
-                                <i class="fas fa-users"></i>
-                            </button>
-                            <button id="fifty_btn" class="support_btn" onclick="use_fifty()">
-                                <i class="fas fa-percent"></i>
-                            </button>
-                        </div>
+                            <div class="support_container">
+                                <div id ="question_index"></div>
+                                <button id="call_btn" class="support_btn" onclick="use_call()">
+                                    <i class="fas fa-phone-alt"></i>
+                                </button>
+                                <button id="audience_btn" class="support_btn" onclick="use_audience()">
+                                    <i class="fas fa-users"></i>
+                                </button>
+                                <button id="fifty_btn" class="support_btn" onclick="use_fifty()">
+                                    <i class="fas fa-percent"></i>
+                                </button>
+                            </div>
                         <div id="question_container">
                             <p id="question"></p>
                             <div id="answers" class="grid_container"></div>
@@ -126,6 +127,7 @@
         </div>
         <!-- resultscreen---------------------------------------------------------------------------------------------------- -->
         <div class="screen" id="result_screen">
+            <div class="bgr_img" id="result_img"></div>
             <div class="content_wrapper">
                 <div class="left_pane_result">
                     <h1>Kết quả của bạn</h1>
@@ -135,10 +137,10 @@
                         <p id="notanswer_count">Số câu chưa làm: </p>
                     </div>
                     <div class="chart_container">
-                        <canvas id="result_chart"></canvas> 
+                        <canvas id="result_chart" ></canvas> 
                     </div>
                     <div class="fix">
-                    <h2 id="money_award_fix">Số tiền bạn nhận được:</h2>
+                    <p id="money_award_fix">Số tiền bạn nhận được:</p>
                     <div class="account_info">
                         <label for="account_number">Số tài khoản:</label>
                         <input type="text" id="account_number" name="account_number" placeholder="Nhập số tài khoản">
@@ -188,6 +190,11 @@
         <button id="No" onclick="continue_work()">Không</button>
         <button id="Yes" onclick="cancel()">Có</button>
     </div>
+    </div>
+    <!-- Hộp thoại ý kiến khán giả trường quay ---------------------------------------------------------------------------------------------------------->
+    <div id="audience" class="notification hidden">
+        <canvas id="audience_chart"></canvas>
+        <button onclick="close_audience()">OK</button>
     </div>
      <!-- Biểu tượng loading------------------------------------------------------------------------------------------------------- -->
     <div id="loading" class="hidden">

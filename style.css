@@ -1,1294 +1,1325 @@
 * {
-    margin: 0;
-    box-sizing: border-box;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 /*CSS cho button*/
 button {
-    padding: 15px 30px; 
-    font-size: 20px; 
-    background-color: #0daded; 
-    color: rgb(0, 0, 0); 
-    border: none; 
-    cursor: pointer; 
-    border-radius: 8px; 
+  padding: 15px 30px;
+  font-size: 20px;
+  background-color: #0daded;
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
 }
 button:hover {
-    background-color: #1e0778; 
-    color: rgb(252, 249, 249); 
+  background-color: #1e0778;
+  color: rgb(252, 249, 249);
 }
 #loading {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(246, 99, 99, 0.8);
-    padding: 20px;
-    border-radius: 8px;
-    z-index: 10; 
-    font-size: 20px ;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(246, 99, 99, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 10;
+  font-size: 20px;
 }
-#admin_password{
-    border-radius: 5px;
-    border: none;
-    padding: 5px 10px;
+#admin_password {
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
 }
 .header_admin {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 7px;
-    margin-top: 8px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 7px;
+  margin-top: 8px;
 }
 /* CSS cho notification--------------------------------------------------------------------------------------------------------------*/
 .notification {
-    position: fixed; /*Cố định phần tử khi cuộn trang*/
-    background-color: white;
-    padding: 20px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
-    z-index: 1000; 
-    display: flex; 
-    font-size: 18px;
-    flex-direction: column; 
-    align-items: center; 
+  position: fixed; /*Cố định phần tử khi cuộn trang*/
+  background-color: white;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  font-size: 18px;
+  flex-direction: column;
+  align-items: center;
 }
 .notification button {
-    border: none;
-    cursor: pointer; /*Biến con trỏ chuột thành ngón tay*/
-    border-radius: 4px;
-    margin-top: 10px; 
-    padding: 8px 15px; 
+  border: none;
+  cursor: pointer; /*Biến con trỏ chuột thành ngón tay*/
+  border-radius: 4px;
+  margin-top: 10px;
+  padding: 8px 15px;
 }
 .notification.hidden {
-    display: none;
+  display: none;
 }
-.hidden{
-    display: none;
+#audience {
+  width: 400px;
+  position: fixed;
+}
+
+#audience_chart {
+  width: 100%;
+  height: 100%;
+}
+.hidden {
+  display: none;
 }
 .highlight {
-    background-color: #ffff99;
+  background-color: #ffff99;
 }
-.current_result{
-    background-color: #ed5f2c;
+.current_result {
+  background-color: #ed5f2c;
 }
 /*Các class lớn----------------------------------------------------------------------------------------------------------------------*/
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; 
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
 }
 .screen {
-    position: relative;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .bgr_img {
-    position: absolute;
-    width: 100%;
-    height: 100%;  
-    z-index: -1; 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .input_container {
-    margin-top: 80vh;
-    text-align: center;
+  margin-top: 80vh;
+  text-align: center;
 }
 .content_wrapper {
-    display: flex;
-    width: 100vw; 
-    height: 100vh; 
+  display: flex;
+  width: 100vw;
+  height: 100vh;
 }
 
 /*Hình nền các screen----------------------------------------------------------------------------------------------------------------*/
 #start_img {
-    background-image: url('img/background_start.jpg');
+  background-image: url("img/background_start.jpg");
 }
 
 #level_img {
-    background-image: url('img/background_level.jpg');
+  background-image: url("img/background_level.jpg");
 }
 
 #game_img {
-    background-image: url('img/background_game.jpg');
+  background-image: url("img/background_game.jpg");
 }
-#login_img{
-    background-image: url('img/background_login.jpg');
+#login_img {
+  background-image: url("img/background_login.jpg");
+}
+#result_img {
+  background-image: linear-gradient(0, rgb(39, 59, 120), rgb(180, 209, 240));
 }
 
 /*CSS cho login_screen------------------------------------------------------------------------------------------------------------------------*/
 #login_screen {
-    text-align: center;
-    height: 100vh;
+  text-align: center;
+  height: 100vh;
 }
 
 .login_element {
-    padding: 10px;
-    margin-top:55vh;
+  padding: 10px;
+  margin-top: 55vh;
 }
 
 button {
-    margin: 5px;
+  margin: 5px;
 }
 
 #admin_login {
-    margin-top: 10px;
+  margin-top: 10px;
 }
-#admin_password{
-    font-size: 19px;
-    height: 50px;
+#admin_password {
+  font-size: 19px;
+  height: 50px;
 }
 
 .hidden {
-    display: none !important;
+  display: none !important;
 }
 
 /* CSS cho admin_screen--------------------------------------------------------------------------------------------------------------- */
+.header_admin {
+  background-color: rgb(18, 10, 99);
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 15px;
+}
 #admin_screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 20px;
-    margin-top: 20px;
-    text-align: center;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .admin_element {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(22, 1, 250, 0.2);
-    min-height: 100vh;
-    margin: 20px 10px;
-
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(22, 1, 250, 0.2);
+  min-height: 100vh;
+  margin: 20px 10px;
 }
 
- .admin_element button {
-    padding: 10px 20px;
-    font-size: 23px;
-    margin-bottom:15px;
-    margin-top: 10px;
-    margin: 0px;
-
-
-} 
+.admin_element button {
+  padding: 10px 20px;
+  font-size: 18px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  margin: 0px;
+}
 .question_item button {
-    font-size: 17px;
-    margin-top: 10px;
+  font-size: 17px;
+  margin-top: 10px;
 }
 .question_item {
-    background-color: #ffffff;
-    border-radius: 5px;
-    margin-bottom: 25px;
-    text-align: left;
-    font-size: 19px;
-    border: 1px solid #8b8b8b;
-    margin: 10px 20px;
-    padding: 10px 20px;
-
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  text-align: left;
+  font-size: 19px;
+  border: 1px solid #8b8b8b;
+  margin: 10px 20px;
+  padding: 10px 20px;
 }
 
 .question_item ul li {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 #add_question_form {
-    padding: 10px;
-    padding-bottom: 0px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow: 0 0 20px rgba(0, 4, 255, 0.1); 
-    margin-bottom: 15px;
-    margin-left: 250px;
-    margin-right:250px;
-    padding: 10px 20px;
+  padding: 10px;
+  padding-bottom: 0px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(0, 4, 255, 0.1);
+  margin-bottom: 15px;
+  margin-left: 250px;
+  margin-right: 250px;
+  margin-top: 15px;
+  padding: 10px 20px;
 }
 
 #add_question_form label {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 #add_question_form input,
 #add_question_form select {
-    margin-top: 5px;
-    padding: 5px;
-    width: 100%;
+  margin-top: 5px;
+  padding: 5px;
+  width: 100%;
 }
 
 .button_container_admin {
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
-    
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
 }
 .button_container_admin button {
-    font-size: 18px;
+  font-size: 18px;
 }
 label {
-    text-align: left;
-    font-size:18px;
-    display: flex;
-    flex-direction: column;
-    margin: 5px;
+  text-align: left;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
 }
-input[type="text" i]{
-    font-size: 17px;
-    width: 100%;
+input[type="text" i] {
+  font-size: 17px;
+  width: 100%;
 }
-h3{
-    font-size: 23px;
+h3 {
+  font-size: 23px;
 }
-.button_confirm{
-    flex-direction: row;
+.button_confirm {
+  flex-direction: row;
 }
-.edit_button_container{
-    margin:0px;
+.edit_button_container {
+  margin: 0px;
 }
-#search_input{
-    margin-bottom: 15px;
-    border-radius: 5px;
-    padding: 11px;
-    text-align: left;
-    font-size: 19px;
-    border: 1px solid #8b8b8b;
-    width: 100vh;
+#search_input {
+  margin-bottom: 15px;
+  border-radius: 5px;
+  padding: 11px;
+  text-align: left;
+  font-size: 16px;
+  border: 1px solid #8b8b8b;
+  width: 100vh;
 }
 .question_item select {
-    font-size: 15px;
-    padding: 5px;
-    width: 100%;
-    height: 25.2px;
+  font-size: 15px;
+  padding: 5px;
+  width: 100%;
+  height: 25.2px;
 }
-#correct_answer{
-    height: 33.2px;
+#correct_answer {
+  height: 33.2px;
 }
 /*CSS cho start_screen----------------------------------------------------------------------------------------------------------------*/
 #name {
-    padding: 15px; 
-    font-size: 19px; 
-    border: 2px solid #ccc;
-    border-radius: 8px; 
-    width: 200px; 
+  padding: 15px;
+  font-size: 19px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  width: 200px;
 }
 #name:focus {
-    outline: none; 
-    border-color:#007bff; 
+  outline: none;
+  border-color: #007bff;
 }
-
 
 /*CSS cho level_screen----------------------------------------------------------------------------------------------------------------*/
-.left_pane, .right_pane {    
-    flex: 1; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 7px;
+.left_pane,
+.right_pane {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
 }
 .level_options {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .level_options button {
-    padding: 10px 20px ;
-    font-size: 40px; 
-    border: none; 
-    cursor: pointer; 
-    border-radius: 4px; 
-    margin: 20px; 
+  padding: 10px 20px;
+  font-size: 40px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 20px;
 }
 
 .level_options h1 {
-    font-size: 50px;
-    font-weight: bold;
-    color: #ffffff;
-    text-align: center;
-    margin-bottom: 30px;
+  font-size: 50px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 30px;
 }
-
-
 
 /* CSS cho game screen --------------------------------------------------------------------------------------------------------------*/
 #game {
-    text-align: center;
-    padding: 20px;
-    width: 100%;
-    max-width: 100vw; 
-    margin-bottom: 20px; 
-    color: rgb(255, 255, 255); 
-    position: absolute; 
-    bottom: 0; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 100vw;
+  margin-bottom: 20px;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .left_pane_game {
-    width: 25%;
-    padding: 20px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;
+  width: 25%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 17vh;
 }
 .right_pane_game {
-    width: 70%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 70%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 #question {
-    font-size: 35px;
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 3px solid rgb(213, 214, 215);
-    background-color: #1f1e1e;
-    border-radius: 10px;
+  font-size: 35px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 3px solid rgb(213, 214, 215);
+  background-color: #1f1e1e;
+  border-radius: 10px;
 }
 #question_container {
-    width: 100%; 
-    max-width: 100vw; 
-    text-align: center;
+  width: 100%;
+  max-width: 100vw;
+  text-align: center;
 }
 #answers {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px; 
-    margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
 }
 #answers button {
-    padding: 10px 20px;
-    font-size: 23px;
-    background-color: #f5f9fb;
-    color: rgb(0, 0, 0);
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 23px;
+  background-color: #f5f9fb;
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
 }
 #answers button:hover {
-    background-color: #bbafc0;
+  background-color: #bbafc0;
 }
 #info_table_wrapper {
-    width: 90%;
-    margin: auto;
-    margin-bottom: 0px;
-    overflow: hidden;
-    border-radius: 7px;
-    background-color: #001038;
-    border: 3px solid rgb(247, 247, 247);
+  width: 90%;
+  margin: auto;
+  margin-bottom: 0px;
+  overflow: hidden;
+  border-radius: 7px;
+  background-color: #001038;
+  border: 3px solid rgb(247, 247, 247);
 }
 #info_table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
-#info_table th, #info_table td {
-    padding: 4px;
-    text-align: center;
-} 
+
+#info_table th,
+#info_table td {
+  padding: 4px;
+  text-align: center;
+}
 #info_table th {
-    background-color: #4266ae;
+  background-color: #4266ae;
 }
 /* Căn chỉnh nút trong game_screen */
 .button_container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
 }
-#next_btn, #stop_btn {
-    font-size: 20px;
-    background-color: #161616;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
+#next_btn,
+#stop_btn {
+  font-size: 20px;
+  background-color: #161616;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
 }
-#next_btn:hover, #stop_btn:hover {
-    background-color: #605e5e;
-    color: rgb(19, 19, 19);
+#next_btn:hover,
+#stop_btn:hover {
+  background-color: #605e5e;
+  color: rgb(19, 19, 19);
 }
 #answers button.selected {
-    animation: blink 1s steps(5, start) infinite;
+  animation: blink 1s steps(5, start) infinite;
 }
 #timer {
-    font-size: 40px;
-    margin-top: 20px;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background-color: black;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    border: 3px solid white;
-    margin-bottom: 50px; 
+  font-size: 40px;
+  margin-top: 20px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 3px solid white;
+  margin-bottom: 50px;
 }
- #question_index{
-display:none;
-} 
+#question_index {
+  display: none;
+}
 .support_container {
-    display: flex;
-    justify-content: space-around;
-    margin: 0px 0;
-    margin-left: auto; 
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  margin: 0px 0;
+  margin-left: auto;
+  margin-bottom: 10px;
 }
 .support_btn {
-    border: none;
-    padding: 20px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+  border: none;
+  padding: 20px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 @keyframes blink {
-    0%, 50%, 100% {
-        visibility: visible;
-    }
-    25%, 75% {
-        visibility: hidden;
-    }
+  0%,
+  50%,
+  100% {
+    visibility: visible;
+  }
+  25%,
+  75% {
+    visibility: hidden;
+  }
 }
 #answers button.selected {
-    animation: blink 0.4s steps(1, start) 5;
+  animation: blink 0.4s steps(1, start) 5;
 }
 
 #answers button.correct {
-    background-color: rgb(103, 244, 56);
-    color: black;
-    animation: none;
+  background-color: rgb(103, 244, 56);
+  color: black;
+  animation: none;
 }
 #answers button.incorrect {
-    background-color: red;
-    color: white;
-    animation: none;
+  background-color: red;
+  color: white;
+  animation: none;
 }
 
 /* CSS cho resul_screen------------------------------------------------------------------------------------------------------------- */
 #result_screen h1 {
-    font-size: 50px;
-    font-weight: bold;
-    color: #000000;
-    text-align: center;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
+  font-size: 50px;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
 }
 .left_pane_result {
-    width: 60%;
-    padding: 5px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
+  width: 60%;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .right_pane_result {
-    width: 40%;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 40%;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .right_pane_result .account_info,
 .right_pane_result .bank_selection {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .right_pane_result label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 .right_pane_result input[type="text"],
 .right_pane_result select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 .chart_container {
-    width: 70%; 
-    max-width: 50%;
-
+  width: 70%;
+  max-width: 50%;
 }
 #result_chart {
-    max-width: 100%;
+  max-width: 100%;
 }
 .money_current {
-    background-color: white;
-    color: black;
-    font-weight: bold; 
+  background-color: white;
+  color: black;
+  font-weight: bold;
 }
 .used {
-    background-color: #383937; 
-    color: white;
+  background-color: #383937;
+  color: white;
 }
-.fix{
+.fix {
+  display: none;
+}
+
+@media all and (min-width: 320px) and (max-width: 480px) {
+  .notification {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 15px;
+    padding: 10px;
+  }
+  .notification button {
+    font-size: 15px;
+    padding: 7px;
+  }
+  .level_options h1 {
+    font-size: 25px;
+  }
+  .level_options button {
+    font-size: 20px;
+  }
+  #info_table_wrapper {
     display: none;
-}
- @media all and (min-width: 320px) and (max-width: 480px)
-{
-    .notification {
-        margin-right: 10px;
-        margin-left: 10px;
-        font-size: 15px;
-        padding: 10px;
-    }
-    .notification button {
-        font-size: 15px;
-        padding: 7px;
-    }
-    .level_options h1 {
-        font-size: 25px;
-    }
-    .level_options button {
-        font-size: 20px; 
-    }
-    #info_table_wrapper {
-        display: none;
-    }
-    #question {
-        font-size: 18px;
-        padding-left: 5px;
-    }
-    .left_pane_game {
-        display:none;
-    }
-    .right_pane_game {
-        width: 100%;
-    }
-    #answers button {
-        font-size: 15px;
-    }
-    #answers{
-        grid-template-columns: repeat(1, 1fr); 
-    }
-    #next_btn, #stop_btn {
-        font-size: 15px;
-        padding: 8px 8px;
-    }
-    .support_btn {
-        font-size: 8px;
-        padding: 15px 15px;
-    }
-    #timer {
-        font-size: 20px;
-        width: 80px;
-        height: 80px;
-        margin-bottom: 20px; 
-    }
-    /* #question_index{
+  }
+  #question {
+    font-size: 18px;
+  }
+  .left_pane_game {
+    display: none;
+  }
+  .right_pane_game {
+    width: 100%;
+  }
+  #answers button {
+    font-size: 15px;
+  }
+  #answers {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #next_btn,
+  #stop_btn {
+    font-size: 15px;
+    padding: 8px 8px;
+  }
+  .support_btn {
+    font-size: 13px;
+    padding: 15px 15px;
+  }
+  #timer {
+    font-size: 20px;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+  }
+  /* #question_index{
         font-size: 15px;
         padding: 5px;
         margin-right: 80px;
     } */
-    #result_screen h1 {
-        font-size: 20px;
-    }
-    #restart_btn{
-        font-size: 15px;
-        padding: 10px;
-        margin-top: 20px;
-    }
-    .fix{
-        display: block;
-        text-align: center;
-    }
-    .right_pane_result{
-        display: none;
-    }
-    .left_pane_result{
-        width:100%;
-    }
-    #result_screen h2{
-        font-size: 15px;
-        margin-top: 20px;
-        text-align: center;
-    }
-    .account_info{
-        margin-top: 15px;
-    }
-    .bank_selection{
-        margin-top: 15px;
-    }
-    #add_question_form {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-    #search_input {
-        width: 30vh;
-    }
-    .admin_element button {
-        font-size: 14px;
-    }
-    .login_element button{
-        font-size: 10px;
-    }
-} 
+  #result_screen h1 {
+    font-size: 30px;
+    margin-bottom: 0px;
+  }
+  #restart_btn {
+    font-size: 19px;
+    padding: 10px 20px;
+    margin-top: 15px;
+  }
+  .fix {
+    display: block;
+    text-align: center;
+  }
+  .right_pane_result {
+    display: none;
+  }
+  .left_pane_result {
+    width: 100%;
+  }
+  #result_screen h2 {
+    font-size: 15px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .account_info {
+    margin-top: 15px;
+  }
+  .bank_selection {
+    margin-top: 15px;
+  }
+  #add_question_form {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  #search_input {
+    width: 30vh;
+  }
+  .admin_element button {
+    font-size: 14px;
+  }
+  .login_element button {
+    font-size: 10px;
+  }
 
+  #account_number {
+    font-size: 15px;
+    padding: 2px 4px;
+  }
+  .bank_selection {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 10px;
+  }
+  #bank {
+    font-size: 15px;
+    padding: 2px 4px;
+    text-align: left;
+  }
+  #money_award_fix {
+    font-size: 17px;
+    margin-top: 5px;
+    font-weight: bold;
+  }
+}
 
-@media all and (min-width: 480px) and (max-width: 600px)
-{
-    .notification {
-        margin-right: 15px;
-        margin-left: 15px;
-        font-size: 17px;
-        padding: 10px;
-    }
-    .notification button {
-        font-size: 15px;
-        padding: 7px;
-    }
-    .level_options h1 {
-        font-size: 30px;
-    }
-    .level_options button {
-        font-size: 25px; 
-    }
-    #info_table_wrapper {
-        display: none;
-    }
-    #question {
-        font-size: 18px;
-        padding-left: 5px;
-    }
-    .left_pane_game {
-        display:none;
-    }
-    .right_pane_game {
-        width: 100%;
-    }
-    #answers button {
-        font-size: 15px;
-    }
-    #answers{
-        grid-template-columns: repeat(1, 1fr); 
-    }
-    #next_btn, #stop_btn {
-        font-size: 15px;
-        padding: 8px 8px;
-    }
-    .support_btn {
-        font-size: 10px;
-        padding: 15px 15px;
-    }
-    #timer {
-        font-size: 20px;
-        width: 80px;
-        height: 80px;
-        margin-bottom: 20px; 
-    }
-    /* #question_index{
+@media all and (min-width: 480px) and (max-width: 600px) {
+  .notification {
+    margin-right: 15px;
+    margin-left: 15px;
+    font-size: 17px;
+    padding: 10px;
+  }
+  .notification button {
+    font-size: 15px;
+    padding: 7px;
+  }
+  .level_options h1 {
+    font-size: 30px;
+  }
+  .level_options button {
+    font-size: 25px;
+  }
+  #info_table_wrapper {
+    display: none;
+  }
+  #question {
+    font-size: 18px;
+  }
+  .left_pane_game {
+    display: none;
+  }
+  .right_pane_game {
+    width: 100%;
+  }
+  #answers button {
+    font-size: 15px;
+  }
+  #answers {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #next_btn,
+  #stop_btn {
+    font-size: 15px;
+    padding: 8px 8px;
+  }
+  .support_btn {
+    font-size: 10px;
+    padding: 15px 15px;
+  }
+  #timer {
+    font-size: 20px;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+  }
+  /* #question_index{
         font-size: 15px;
         padding: 5px;
         margin-right: 250px;
     } */
-    #result_screen h1 {
-        font-size: 20px;
-    }
-    #restart_btn{
-        font-size: 15px;
-        padding: 10px;
-        margin-top: 20px;
-    }
-    .fix{
-        display: block;
-        text-align: center;
-    }
-    .right_pane_result{
-        display: none;
-    }
-    .left_pane_result{
-        width:100%;
-    }
-    #result_screen h2{
-        font-size: 15px;
-        margin-top: 20px;
-        text-align: center;
-    }
-    .account_info{
-        margin-top: 15px;
-    }
-    .bank_selection{
-        margin-top: 15px;
-    }
-    #add_question_form {
-        margin-left: 50px;
-        margin-right: 50px;
-    }
-    #search_input {
-        width: 40vh;
-    }
-    .admin_element button {
-        font-size: 17px;
-    }
-} 
-@media all and (min-width: 600px) and (max-width: 768px)
-{
-    .notification {
-        margin-right: 10px;
-        margin-left: 10px;
-        font-size: 19px;
-        padding: 10px;
-    }
-    .notification button {
-        font-size: 18px;
-        padding: 7px;
-    }
-    .level_options h1 {
-        font-size: 30px;
-    }
-    .level_options button {
-        font-size: 25px; 
-    }
-    #question {
-        font-size: 18px;
-        padding-left: 5px;
-    }
-    #info_table_wrapper {
-        margin-top: 25vh;
-        display:flex;
-
-    }
-    #info_table th, #info_table td {
-        padding: 2px;
-    } 
-    .left_pane_game {
-       display: block;
-       width: 37%;
-       height: 100vh;
-    }
-    .right_pane_game {
-        width: 63%;
-    }
-    #answers button {
-        font-size: 15px;
-    }
-    #answers{
-        grid-template-columns: repeat(1, 1fr); 
-    }
-    #next_btn, #stop_btn {
-        font-size: 15px;
-        padding: 8px 8px;
-    }
-    .support_btn {
-        font-size: 12px;
-        padding: 15px 15px;
-    }
-    #timer {
-        font-size: 20px;
-        width: 80px;
-        height: 80px;
-        margin-bottom: 20px; 
-        margin-top: 20px;
-    }
-    /* #question_index{
+  #result_screen h1 {
+    font-size: 20px;
+  }
+  #restart_btn {
+    font-size: 15px;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  .fix {
+    display: block;
+    text-align: center;
+  }
+  .right_pane_result {
+    display: none;
+  }
+  .left_pane_result {
+    width: 100%;
+  }
+  #result_screen h2 {
+    font-size: 15px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .account_info {
+    margin-top: 15px;
+  }
+  .bank_selection {
+    margin-top: 15px;
+  }
+  #add_question_form {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  #search_input {
+    width: 40vh;
+  }
+  .admin_element button {
+    font-size: 17px;
+  }
+}
+@media all and (min-width: 600px) and (max-width: 768px) {
+  .notification {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 19px;
+    padding: 10px;
+  }
+  .notification button {
+    font-size: 18px;
+    padding: 7px;
+  }
+  .level_options h1 {
+    font-size: 30px;
+  }
+  .level_options button {
+    font-size: 25px;
+  }
+  #question {
+    font-size: 18px;
+  }
+  #info_table_wrapper {
+    margin-top: 25vh;
+    display: flex;
+  }
+  #info_table th,
+  #info_table td {
+    padding: 2px;
+  }
+  .left_pane_game {
+    display: block;
+    width: 37%;
+    height: 100vh;
+  }
+  .right_pane_game {
+    width: 63%;
+  }
+  #answers button {
+    font-size: 15px;
+  }
+  #answers {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #next_btn,
+  #stop_btn {
+    font-size: 15px;
+    padding: 8px 8px;
+  }
+  .support_btn {
+    font-size: 12px;
+    padding: 15px 15px;
+  }
+  #timer {
+    font-size: 20px;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  /* #question_index{
         font-size: 15px;
         padding: 5px;
         margin-right: 150px;
     } */
-    #result_screen h1 {
-        font-size: 20px;
-    }
-    #restart_btn{
-        font-size: 15px;
-        padding: 10px;
-        margin-top: 20px;
-    }
-    .fix{
-        display: block;
-        text-align: center;
-    }
-    .right_pane_result{
-        display: none;
-    }
-    .left_pane_result{
-        width:100%;
-    }
-    #result_screen h2{
-        font-size: 15px;
-        margin-top: 20px;
-        text-align: center;
-    }
-    .account_info{
-        margin-top: 15px;
-    }
-    .bank_selection{
-        margin-top: 15px;
-    }
-    #add_question_form {
-        margin-left: 100px;
-        margin-right: 100px;
-    }
-    #search_input {
-        width: 40vh;
-    }
-    .admin_element button {
-        font-size: 17px;
-    }
-} 
-@media all and (min-width: 768px) and (max-width: 800px)
-{
-    .notification {
-        margin-right: 10px;
-        margin-left: 10px;
-        font-size: 20px;
-        padding: 10px;
-    }
-    .notification button {
-        font-size: 17px;
-        padding: 7px;
-    }
-    .left_pane {
-        width: 40%;
-     }
-     .right_pane {
-         width: 60%;
-     }
-    .level_options h1 {
-        font-size: 30px;
-    }
-    .level_options button {
-        font-size: 25px; 
-    }
-    #question {
-        font-size: 20px;
-        padding-left: 5px;
-    }
-    #info_table_wrapper {
-        margin-top: 25vh;
-        display:flex;
-
-    }
-    #info_table th, #info_table td {
-        padding: 2px;
-    } 
-    .left_pane_game {
-       display: block;
-       width: 37%;
-       height: 100vh;
-    }
-    .right_pane_game {
-        width: 63%;
-    }
-    #answers button {
-        font-size: 18px;
-    }
-    #answers{
-        grid-template-columns: repeat(1, 1fr); 
-    }
-    #next_btn, #stop_btn {
-        font-size: 18px;
-        padding: 10px 10px;
-    }
-    .support_btn {
-        font-size: 14px;
-        padding: 15px 15px;
-    }
-    #timer {
-        font-size: 25px;
-        width: 90px;
-        height: 90px;
-        margin-bottom: 20px; 
-        margin-top: 20px;
-    }
-    /* #question_index{
+  #result_screen h1 {
+    font-size: 20px;
+  }
+  #restart_btn {
+    font-size: 15px;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  .fix {
+    display: block;
+    text-align: center;
+  }
+  .right_pane_result {
+    display: none;
+  }
+  .left_pane_result {
+    width: 100%;
+  }
+  #result_screen h2 {
+    font-size: 15px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .account_info {
+    margin-top: 15px;
+  }
+  .bank_selection {
+    margin-top: 15px;
+  }
+  #add_question_form {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  #search_input {
+    width: 40vh;
+  }
+  .admin_element button {
+    font-size: 17px;
+  }
+}
+@media all and (min-width: 768px) and (max-width: 800px) {
+  .notification {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+    padding: 10px;
+  }
+  .notification button {
+    font-size: 17px;
+    padding: 7px;
+  }
+  .left_pane {
+    width: 40%;
+  }
+  .right_pane {
+    width: 60%;
+  }
+  .level_options h1 {
+    font-size: 30px;
+  }
+  .level_options button {
+    font-size: 25px;
+  }
+  #question {
+    font-size: 20px;
+  }
+  #info_table_wrapper {
+    margin-top: 25vh;
+    display: flex;
+  }
+  #info_table th,
+  #info_table td {
+    padding: 2px;
+  }
+  .left_pane_game {
+    display: block;
+    width: 37%;
+    height: 100vh;
+  }
+  .right_pane_game {
+    width: 63%;
+  }
+  #answers button {
+    font-size: 18px;
+  }
+  #answers {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #next_btn,
+  #stop_btn {
+    font-size: 18px;
+    padding: 10px 10px;
+  }
+  .support_btn {
+    font-size: 14px;
+    padding: 15px 15px;
+  }
+  #timer {
+    font-size: 25px;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  /* #question_index{
         font-size: 18px;
         padding: 5px;
         margin-right: 230px;
     } */
-    #result_screen h1 {
-        font-size: 45px;
-    }
-    #restart_btn{
-        font-size: 20px;
-        padding: 10px 15px;
-        margin-top: 20px;
-    }
-    .fix{
-        display: none;
-    }
+  #result_screen h1 {
+    font-size: 45px;
+  }
+  #restart_btn {
+    font-size: 20px;
+    padding: 10px 15px;
+    margin-top: 20px;
+  }
+  .fix {
+    display: none;
+  }
 
-    .right_pane_result{
-        margin-right: 15px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    #result_screen h2{
-        font-size: 25px;
-        margin-top: 20px;
-        text-align: center;
-        margin-right:auto;
-    }
-    .account_info{
-        font-size: 20px;
-        margin-right:auto;
-    }
-    .bank_selection {
-        font-size: 20px;
-        margin-right:auto;
-    }
-    #result_summary{
-        font-size: 18px;
-    }
-    #add_question_form {
-        margin-left: 100px;
-        margin-right: 100px;
-    }
+  .right_pane_result {
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #result_screen h2 {
+    font-size: 25px;
+    margin-top: 20px;
+    text-align: center;
+    margin-right: auto;
+  }
+  .account_info {
+    font-size: 20px;
+    margin-right: auto;
+  }
+  .bank_selection {
+    font-size: 20px;
+    margin-right: auto;
+  }
+  #result_summary {
+    font-size: 18px;
+  }
+  #add_question_form {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
 }
-    @media all and (min-width: 800px) and (max-width: 1025px)
-    {
-        .notification {
-            margin-right: 10px;
-            margin-left: 10px;
-            font-size: 20px;
-            padding: 10px;
-        }
-        .notification button {
-            font-size: 17px;
-            padding: 7px;
-        }
-        .left_pane {
-            width: 40%;
-         }
-         .right_pane {
-             width: 60%;
-         }
-        .level_options h1 {
-            font-size: 30px;
-        }
-        .level_options button {
-            font-size: 25px; 
-        }
-        #question {
-            font-size: 20px;
-            padding-left: 5px;
-        }
-        #info_table_wrapper {
-            margin-top: 25vh;
-            display:flex;
-    
-        }
-        #info_table th, #info_table td {
-            padding: 2px;
-        } 
-        .left_pane_game {
-           display: block;
-           width: 37%;
-           height: 100vh;
-        }
-        .right_pane_game {
-            width: 63%;
-        }
-        #answers button {
-            font-size: 18px;
-        }
-        #answers{
-            grid-template-columns: repeat(1, 1fr); 
-        }
-        #next_btn, #stop_btn {
-            font-size: 18px;
-            padding: 10px 10px;
-        }
-        .support_btn {
-            font-size: 14px;
-            padding: 15px 15px;
-        }
-        #timer {
-            font-size: 28px;
-            width: 100px;
-            height: 100px;
-            margin-bottom: 20px; 
-            margin-top: 20px;
-        }
-        /* #question_index{
+@media all and (min-width: 800px) and (max-width: 1025px) {
+  .notification {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+    padding: 10px;
+  }
+  .notification button {
+    font-size: 17px;
+    padding: 7px;
+  }
+  .left_pane {
+    width: 40%;
+  }
+  .right_pane {
+    width: 60%;
+  }
+  .level_options h1 {
+    font-size: 30px;
+  }
+  .level_options button {
+    font-size: 25px;
+  }
+  #question {
+    font-size: 20px;
+  }
+  #info_table_wrapper {
+    margin-top: 25vh;
+    display: flex;
+  }
+  #info_table th,
+  #info_table td {
+    padding: 2px;
+  }
+  .left_pane_game {
+    display: block;
+    width: 37%;
+    height: 100vh;
+  }
+  .right_pane_game {
+    width: 63%;
+  }
+  #answers button {
+    font-size: 18px;
+  }
+  #answers {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #next_btn,
+  #stop_btn {
+    font-size: 18px;
+    padding: 10px 10px;
+  }
+  .support_btn {
+    font-size: 14px;
+    padding: 15px 15px;
+  }
+  #timer {
+    font-size: 28px;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  /* #question_index{
             font-size: 18px;
             padding: 5px;
             margin-right: 240px;
         } */
-        #result_screen h1 {
-            font-size: 45px;
-        }
-        #restart_btn{
-            font-size: 20px;
-            padding: 10px 15px;
-            margin-top: 20px;
-        }
-        .fix{
-            display: none;
-        }
-    
-        .right_pane_result{
-            margin-right: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        #result_screen h2{
-            font-size: 25px;
-            margin-top: 20px;
-            text-align: center;
-            margin-right:auto;
-        }
-        .account_info{
-            font-size: 20px;
-            margin-right:auto;
-        }
-        .bank_selection {
-            font-size: 20px;
-            margin-right:auto;
-        }
-        #result_summary{
-            font-size: 18px;
-        }
-        #add_question_form {
-            margin-left: 100px;
-            margin-right: 100px;
-        }   
-        #search_input {
-            width: 40vh;
-        }
-        .admin_element button {
-            font-size: 17px;
-        }
+  #result_screen h1 {
+    font-size: 45px;
+  }
+  #restart_btn {
+    font-size: 20px;
+    padding: 10px 15px;
+    margin-top: 20px;
+  }
+  .fix {
+    display: none;
+  }
 
+  .right_pane_result {
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #result_screen h2 {
+    font-size: 25px;
+    margin-top: 20px;
+    text-align: center;
+    margin-right: auto;
+  }
+  .account_info {
+    font-size: 20px;
+    margin-right: auto;
+  }
+  .bank_selection {
+    font-size: 20px;
+    margin-right: auto;
+  }
+  #result_summary {
+    font-size: 18px;
+  }
+  #add_question_form {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  #search_input {
+    width: 40vh;
+  }
+  .admin_element button {
+    font-size: 17px;
+  }
 }
-@media all and (min-width: 1025px) and (max-width: 1280px)
-{
-    .notification {
-        margin-right: 10px;
-        margin-left: 10px;
-        font-size: 20px;
-        padding: 10px;
-    }
-    .notification button {
-        font-size: 17px;
-        padding: 7px;
-    }
-    .left_pane {
-        width: 40%;
-     }
-     .right_pane {
-         width: 60%;
-     }
-    .level_options h1 {
-        font-size: 30px;
-    }
-    .level_options button {
-        font-size: 30px; 
-    }
-    #question {
-        font-size: 20px;
-        padding-left: 5px;
-    }
-    #info_table_wrapper {
-        margin-top: 25vh;
-        display:flex;
-
-    }
-    #info_table th, #info_table td {
-        padding: 2px;
-    } 
-    .left_pane_game {
-       display: block;
-       width: 37%;
-       height: 100vh;
-    }
-    .right_pane_game {
-        width: 63%;
-    }
-    #answers button {
-        font-size: 18px;
-    }
-    #answers{
-        grid-template-columns: repeat(1, 1fr); 
-    }
-    #next_btn, #stop_btn {
-        font-size: 18px;
-        padding: 10px 10px;
-    }
-    .support_btn {
-        font-size: 14px;
-        padding: 15px 15px;
-    }
-    #timer {
-        font-size: 28px;
-        width: 100px;
-        height: 100px;
-        margin-bottom: 20px; 
-        margin-top: 20px;
-    }
-    /* #question_index{
+@media all and (min-width: 1025px) and (max-width: 1280px) {
+  .notification {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+    padding: 10px;
+  }
+  .notification button {
+    font-size: 17px;
+    padding: 7px;
+  }
+  .left_pane {
+    width: 40%;
+  }
+  .right_pane {
+    width: 60%;
+  }
+  .level_options h1 {
+    font-size: 30px;
+  }
+  .level_options button {
+    font-size: 30px;
+  }
+  #question {
+    font-size: 20px;
+  }
+  #info_table_wrapper {
+    margin-top: 25vh;
+    display: flex;
+  }
+  #info_table th,
+  #info_table td {
+    padding: 2px;
+  }
+  .left_pane_game {
+    display: block;
+    width: 37%;
+    height: 100vh;
+  }
+  .right_pane_game {
+    width: 63%;
+  }
+  #answers button {
+    font-size: 18px;
+  }
+  #answers {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #next_btn,
+  #stop_btn {
+    font-size: 18px;
+    padding: 10px 10px;
+  }
+  .support_btn {
+    font-size: 14px;
+    padding: 15px 15px;
+  }
+  #timer {
+    font-size: 28px;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  /* #question_index{
         font-size: 18px;
         padding: 5px;
         margin-right: 380px;
     } */
-    #result_screen h1 {
-        font-size: 45px;
-    }
-    #restart_btn{
-        font-size: 20px;
-        padding: 10px 15px;
-        margin-top: 20px;
-    }
-    .fix{
-        display: none;
-    }
+  #result_screen h1 {
+    font-size: 45px;
+  }
+  #restart_btn {
+    font-size: 20px;
+    padding: 10px 15px;
+    margin-top: 20px;
+  }
+  .fix {
+    display: none;
+  }
 
-    .right_pane_result{
-        margin-right: 15px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    #result_screen h2{
-        font-size: 25px;
-        margin-top: 20px;
-        text-align: center;
-        margin-right:auto;
-    }
-    .account_info{
-        font-size: 20px;
-        margin-right:auto;
-    }
-    .bank_selection {
-        font-size: 20px;
-        margin-right:auto;
-    }
-    #result_summary{
-        font-size: 18px;
-    }
+  .right_pane_result {
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #result_screen h2 {
+    font-size: 25px;
+    margin-top: 20px;
+    text-align: center;
+    margin-right: auto;
+  }
+  .account_info {
+    font-size: 20px;
+    margin-right: auto;
+  }
+  .bank_selection {
+    font-size: 20px;
+    margin-right: auto;
+  }
+  #result_summary {
+    font-size: 18px;
+  }
 }
-@media all and (min-width: 1280px) and (max-width: 1500px)
-{
-    .notification {
-        margin-right: 10px;
-        margin-left: 10px;
-        font-size: 20px;
-        padding: 10px;
-    }
-    .notification button {
-        font-size: 17px;
-        padding: 7px;
-    }
-    .left_pane {
-        width: 40%;
-     }
-     .right_pane {
-         width: 60%;
-     }
-    .level_options h1 {
-        font-size: 40px;
-    }
-    .level_options button {
-        font-size: 35px; 
-    }
-    #question {
-        font-size: 30px;
-        padding-left: 5px;
-    }
-    #info_table_wrapper {
-        margin-top: 28vh;
-        display:flex;
+@media all and (min-width: 1280px) and (max-width: 1500px) {
+  .notification {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: 20px;
+    padding: 10px;
+  }
+  .notification button {
+    font-size: 17px;
+    padding: 7px;
+  }
+  .left_pane {
+    width: 40%;
+  }
+  .right_pane {
+    width: 60%;
+  }
+  .level_options h1 {
+    font-size: 40px;
+  }
+  .level_options button {
+    font-size: 35px;
+  }
+  #question {
+    font-size: 30px;
+  }
+  #info_table_wrapper {
+    margin-top: 28vh;
+    display: flex;
+  }
+  #info_table th,
+  #info_table td {
+    padding: 2px;
+  }
+  .left_pane_game {
+    display: block;
+    width: 30%;
+    height: 100vh;
+  }
+  .right_pane_game {
+    width: 70%;
+  }
+  #answers button {
+    font-size: 28px;
+  }
+  #answers {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #next_btn,
+  #stop_btn {
+    font-size: 23px;
+    padding: 15px 15px;
+  }
+  .support_btn {
+    font-size: 20px;
+    padding: 20px 20px;
+  }
+  #timer {
+    font-size: 28px;
+    width: 130px;
+    height: 130px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  #result_screen h1 {
+    font-size: 45px;
+  }
+  #restart_btn {
+    font-size: 25px;
+    padding: 15px 20px;
+    margin-top: 20px;
+  }
+  .fix {
+    display: none;
+  }
 
-    }
-    #info_table th, #info_table td {
-        padding: 2px;
-    } 
-    .left_pane_game {
-       display: block;
-       width: 30%;
-       height: 100vh;
-    }
-    .right_pane_game {
-        width: 70%;
-    }
-    #answers button {
-        font-size: 28px;
-    }
-    #answers{
-        grid-template-columns: repeat(2, 1fr); 
-    }
-    #next_btn, #stop_btn {
-        font-size: 23px;
-        padding: 15px 15px;
-    }
-    .support_btn {
-        font-size: 20px;
-        padding: 20px 20px;
-    }
-    #timer {
-        font-size: 28px;
-        width: 130px;
-        height: 130px;
-        margin-bottom: 20px; 
-        margin-top: 20px;
-    }
-    #result_screen h1 {
-        font-size: 45px;
-    }
-    #restart_btn{
-        font-size: 25px;
-        padding: 15px 20px;
-        margin-top: 20px;
-    }
-    .fix{
-        display: none;
-    }
-
-    .right_pane_result{
-        margin-right: 15px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    #result_screen h2{
-        font-size: 26px;
-        margin-top: 20px;
-        text-align: center;
-        margin-right:auto;
-    }
-    .account_info{
-        font-size: 25px;
-        margin-right:auto;
-    }
-    .bank_selection {
-        font-size: 25px;
-        margin-right:auto;
-    }
-    #result_summary{
-        font-size: 22px;
-    }
+  .right_pane_result {
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #result_screen h2 {
+    font-size: 26px;
+    margin-top: 20px;
+    text-align: center;
+    margin-right: auto;
+  }
+  .account_info {
+    font-size: 25px;
+    margin-right: auto;
+  }
+  .bank_selection {
+    font-size: 25px;
+    margin-right: auto;
+  }
+  #result_summary {
+    font-size: 22px;
+  }
 }
-
