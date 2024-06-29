@@ -219,6 +219,7 @@ button.delete {
   flex-direction: row-reverse;
   width: 40%;
   height: 70px;
+  margin-top: 20px;
 }
 
 #correct-answer {
